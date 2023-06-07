@@ -600,7 +600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1096e4d5e54174c4cbb2587d38ca34fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  maxSpeed: 8
+  minSpeed: 2
+  maxDistance: 10
+  minDistance: 1
   rotaionSpeed: 200
 --- !u!4 &1321505568
 Transform:
@@ -632,7 +635,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SnakeTailGfx: {fileID: 2028802732}
-  circleDiameter: 0.32
+  minCircleDiameter: 0
+  maxCircleDiameter: 0
+  speedMultiplier: 0
   snakeLength: 0
 --- !u!114 &1321505570
 MonoBehaviour:

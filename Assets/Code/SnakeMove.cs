@@ -5,25 +5,37 @@ using UnityEngine.UIElements;
 
 public class SnakeMove : MonoBehaviour
 {
-    public float speed = 3f;
+    public float maxSpeed = 8f;
+    public float minSpeed = 2f;
+    public float maxDistance = 10f;
+    public float minDistance = 1f;
+
     public float rotaionSpeed = 200f;
 
-    private Vector3 mousePosition;
+    [HideInInspector]
+    public float speed;
+
+    private float speedKeyboard = 3f; // if controlled via keyboard
     private float velX = 0f;
 
+    private Vector3 mousePosition;
+    private Vector2 screenBounds;
+
     private bool mouseControl = true;
+
 
     private void Update()
     {
         velX = Input.GetAxisRaw("Horizontal");
+
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
     private void FixedUpdate()
     {
         if (!mouseControl)
         {
-            transform.Translate(Vector2.up * speed * Time.fixedDeltaTime, Space.Self);
-
+            transform.Translate(Vector2.up * speedKeyboard * Time.fixedDeltaTime, Space.Self);
             transform.Rotate(Vector3.forward * -velX * rotaionSpeed * Time.fixedDeltaTime);
         }
         else
@@ -33,17 +45,32 @@ public class SnakeMove : MonoBehaviour
             mousePosition.z = 0f;
             Vector2 tmpDir = mousePosition - transform.position;
 
+            float xInScreen = Mathf.Min(Mathf.Abs(mousePosition.x), screenBounds.x);
+            float yInScreen = Mathf.Min(Mathf.Abs(mousePosition.y), screenBounds.y);
+
+            if (mousePosition.x < 0)
+                mousePosition.x = -xInScreen;
+            else
+                mousePosition.x = xInScreen;
+
+            if (mousePosition.y < 0)
+                mousePosition.y = -yInScreen;
+            else
+                mousePosition.y = yInScreen;
+
+            // Only move when there is at least a small distance to Cursor
             if (Mathf.Sqrt(Mathf.Pow(tmpDir.x, 2) + Mathf.Pow(tmpDir.y, 2)) > 0.2f)
             {
-                // faster if cursor far away
-                //transform.position = Vector2.Lerp(transform.position, mousePosition, speed / 4 * Time.deltaTime);
 
-                // always same speed
-                transform.position = Vector2.Lerp(transform.position, mousePosition, speed * 1f / tmpDir.magnitude * Time.deltaTime);
+                // Calculate the distance between the player and the cursor
+                float distance = Vector3.Distance(transform.position, mousePosition);
 
-                /* also possible:
+                // Calculate the speed based on the distance
+                speed = Mathf.Lerp(minSpeed, maxSpeed, Mathf.InverseLerp(minDistance, maxDistance, distance));
+
                 transform.position = Vector3.MoveTowards(transform.position, mousePosition, speed * Time.deltaTime);
-                */
+
+
 
                 // Rotate Head
                 float leftright = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;

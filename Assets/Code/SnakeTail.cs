@@ -7,8 +7,12 @@ public class SnakeTail : MonoBehaviour
 {
 
     public Transform SnakeTailGfx;
-    public float circleDiameter;
+    private float circleDiameter = 0.32f;
+
+    [HideInInspector]
     public int snakeLength;
+
+    public SnakeMove snakeMove;
 
     private List<Transform> snakeTails = new List<Transform>();
     private List<Vector2> positions = new List<Vector2>();
@@ -27,7 +31,11 @@ public class SnakeTail : MonoBehaviour
     {
         float distance = ((Vector2)SnakeTailGfx.position - positions[0]).magnitude;
 
-        if(distance > circleDiameter)
+        // between 0.1 and 0.4 based on speed
+        circleDiameter = setcircleDiameterBasedOnSpeed(snakeMove.speed, snakeMove.maxSpeed, snakeMove.minSpeed);
+
+
+        if (distance > circleDiameter)
         {
             Vector2 direction = ((Vector2)SnakeTailGfx.position - positions[0]).normalized; // direction to SnakeTail 0
 
@@ -49,5 +57,12 @@ public class SnakeTail : MonoBehaviour
         snakeTails.Add(tail);
         positions.Add(tail.position);
         snakeLength = snakeTails.Count+1;
+    }
+
+    private float setcircleDiameterBasedOnSpeed(float speed, float maxSpeed, float minSpeed)
+    {
+        float normalizedSpeed = Mathf.InverseLerp(minSpeed, maxSpeed, speed); // percentage of speed in given range
+        float x = Mathf.Lerp(0.15f, 0.4f, normalizedSpeed); // interpolate normalizedSpeed between 0.1 and 0.4
+        return x;
     }
 }
