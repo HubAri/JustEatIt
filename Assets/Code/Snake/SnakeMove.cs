@@ -84,4 +84,6 @@ public class SnakeMove : MonoBehaviour
         }
 
     }
+
+
 }

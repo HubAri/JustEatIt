@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
-    private float enemySpeed = 3f;
+    private float enemySpeed = 1f;
     private float rotationSpeed = 5f;
 
     private Vector2 screenBounds;

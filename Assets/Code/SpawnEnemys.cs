@@ -51,7 +51,7 @@ public class SpawnEnemys : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        // wait 5 - 12 sec
+        // wait 5 - 10 sec
         yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f) * 80 * Time.fixedDeltaTime); //set random time to spawn
         
         int i = UnityEngine.Random.Range(0, enemys.Length);
