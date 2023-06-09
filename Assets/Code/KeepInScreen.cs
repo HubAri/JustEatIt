@@ -10,7 +10,6 @@ public class KeepInScreen : MonoBehaviour
     private float objectWidth;
     private float objectHeight;
 
-    // Use this for initialization
     private void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));

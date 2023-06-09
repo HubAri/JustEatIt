@@ -7,6 +7,8 @@ TagManager:
   - normalCol
   - posCol
   - negCol
+  - Enemy
+  - enemy
   layers:
   - Default
   - TransparentFX

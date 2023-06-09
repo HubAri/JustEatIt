@@ -9,7 +9,7 @@ public class SpawnEnemys : MonoBehaviour
 
     private Vector2 screenBounds;
 
-    void Start()
+    private void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
@@ -17,7 +17,7 @@ public class SpawnEnemys : MonoBehaviour
 
     }
 
-    void InitEnemy(GameObject enemy)
+    private void InitEnemy(GameObject enemy)
     {
 
         int r = UnityEngine.Random.Range(0, 4);
@@ -52,13 +52,12 @@ public class SpawnEnemys : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         // wait 5 - 12 sec
-        yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 12f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+        yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f) * 80 * Time.fixedDeltaTime); //set random time to spawn
         
         int i = UnityEngine.Random.Range(0, enemys.Length);
         InitEnemy(enemys[i]);
 
         StartCoroutine(SpawnEnemy());
     }
-
 
 }

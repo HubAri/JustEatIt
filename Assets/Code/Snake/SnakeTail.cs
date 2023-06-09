@@ -14,11 +14,11 @@ public class SnakeTail : MonoBehaviour
 
     public SnakeMove snakeMove;
 
-    private List<Transform> snakeTails = new List<Transform>();
-    private List<Vector2> positions = new List<Vector2>();
+    private List<Transform> snakeTails = new();
+    private List<Vector2> positions = new();
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         positions.Add(SnakeTailGfx.position); // Position of SnakeTail 0 (behind the head)
         AddTail();
@@ -27,7 +27,7 @@ public class SnakeTail : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float distance = ((Vector2)SnakeTailGfx.position - positions[0]).magnitude;
 

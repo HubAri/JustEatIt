@@ -15,7 +15,6 @@ public class SpawnCollectibles : MonoBehaviour
     private float x;
     private float y;
 
-
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
