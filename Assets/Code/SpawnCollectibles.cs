@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class SpawnCollectibles : MonoBehaviour
@@ -10,12 +9,11 @@ public class SpawnCollectibles : MonoBehaviour
     public GameObject positive;
     public GameObject negative;
 
-    private List<GameObject> posList = new List<GameObject>();
-    private List<GameObject> negList = new List<GameObject>();
+    private List<GameObject> posList = new();
+    private List<GameObject> negList = new();
     private Vector2 screenBounds;
     private float x;
     private float y;
-
 
 
     void Start()
@@ -32,7 +30,7 @@ public class SpawnCollectibles : MonoBehaviour
         x = UnityEngine.Random.Range(-screenBounds.x + collectible.transform.GetComponent<SpriteRenderer>().bounds.extents.x, screenBounds.x - collectible.transform.GetComponent<SpriteRenderer>().bounds.extents.x);
         y = UnityEngine.Random.Range(-screenBounds.y + collectible.transform.GetComponent<SpriteRenderer>().bounds.extents.y, screenBounds.y - collectible.transform.GetComponent<SpriteRenderer>().bounds.extents.y);
         GameObject obj = Instantiate(collectible, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
-
+        obj.transform.parent = gameObject.transform;
 
         if (collectible.name == positive.name)
         {

@@ -26,8 +26,6 @@ public class SnakeMove : MonoBehaviour
 
     private void Update()
     {
-        velX = Input.GetAxisRaw("Horizontal");
-
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
@@ -35,6 +33,7 @@ public class SnakeMove : MonoBehaviour
     {
         if (!mouseControl)
         {
+            velX = Input.GetAxisRaw("Horizontal"); // pressed A -> -1, D -> 1, else 0
             transform.Translate(Vector2.up * speedKeyboard * Time.fixedDeltaTime, Space.Self);
             transform.Rotate(Vector3.forward * -velX * rotaionSpeed * Time.fixedDeltaTime);
         }

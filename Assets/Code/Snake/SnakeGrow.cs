@@ -17,9 +17,9 @@ public class SnakeGrow : MonoBehaviour
         scoreNum = 0;
         scoreText.text = "Score: " + scoreNum;
     }
-    private void OnTriggerEnter2D(Collider2D Collectable)
+    private void OnCollisionEnter2D(Collision2D Collectable)
     {
-        if (Collectable.tag == "normalCol")
+        if (Collectable.gameObject.CompareTag("normalCol"))
         {
             Destroy(Collectable.gameObject, 0.02f);
             scoreNum += snakeTail.snakeLength * 10;
@@ -27,13 +27,13 @@ public class SnakeGrow : MonoBehaviour
             scoreText.text = "Score: " + scoreNum;
             spawnCollectibles.SpawnNeut();
         }
-        else if (Collectable.tag == "posCol")
+        else if (Collectable.gameObject.CompareTag("posCol"))
         {
             Destroy(Collectable.gameObject, 0.02f);
             scoreNum += snakeTail.snakeLength * 50;
             scoreText.text = "Score: " + scoreNum;
         }
-        else if (Collectable.tag == "negCol")
+        else if (Collectable.gameObject.CompareTag("negCol"))
         {
             Destroy(Collectable.gameObject, 0.02f);
             scoreNum -= 250;

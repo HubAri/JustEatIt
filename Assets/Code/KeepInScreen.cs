@@ -27,7 +27,6 @@ public class KeepInScreen : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     private void LateUpdate()
     {
         Vector3 viewPos = transform.position;
