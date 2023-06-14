@@ -785,6 +785,7 @@ MonoBehaviour:
   SnakeTailGfx: {fileID: 2028802732}
   snakeLength: 0
   snakeMove: {fileID: 1321505567}
+  powerUpActivated: 0
 --- !u!1 &1343364423
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +881,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemys:
   - {fileID: 4381071245987706818, guid: 8621216db3c651f4299581e10216ef18, type: 3}
+  powerups:
+  - {fileID: 8441601668082122911, guid: 51cd052de72404144bb2371f8b30cb45, type: 3}
 --- !u!1 &1693325058
 GameObject:
   m_ObjectHideFlags: 0

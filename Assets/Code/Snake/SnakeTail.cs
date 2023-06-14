@@ -16,6 +16,9 @@ public class SnakeTail : MonoBehaviour
     public int snakeLength;
 
     public SnakeMove snakeMove;
+    public bool powerUpActivated = false;
+
+    
 
     private Dictionary<int, Transform> snakeTails = new();
     private List<Vector2> positions = new();
@@ -91,13 +94,41 @@ public class SnakeTail : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-        { // Game over
-            Debug.Log("Game over");
-            GameObject snake = gameObject;
-            Destroy(snake);
-            Time.timeScale = 0;
+        { if (!powerUpActivated)
+            {
+
+                // Game over
+                Debug.Log("Game over");
+                GameObject snake = gameObject;
+                Destroy(snake);
+                Time.timeScale = 0;
+            }
+            else {
+                Destroy(collision.gameObject);
+
+            }
         }
+        else if (collision.gameObject.CompareTag("PowerUp"))
+        { 
+            Destroy(collision.gameObject);
+
+            StartCoroutine(WaitPowerUp());
+
+
+        }
+
+
     }
 
+
+
+    IEnumerator WaitPowerUp()
+    {
+        powerUpActivated = true;
+
+        // wait 5 - 10 sec
+        yield return new WaitForSeconds(10 * 80 * Time.fixedDeltaTime); //set random time to spawn
+        powerUpActivated = false;
+    }
 
 }

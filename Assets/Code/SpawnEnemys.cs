@@ -6,6 +6,7 @@ using UnityEngine;
 public class SpawnEnemys : MonoBehaviour
 {
     public GameObject[] enemys;
+    public GameObject[] powerups;
 
     private Vector2 screenBounds;
 
@@ -14,6 +15,7 @@ public class SpawnEnemys : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnPowerUp());
 
     }
 
@@ -58,6 +60,18 @@ public class SpawnEnemys : MonoBehaviour
         InitEnemy(enemys[i]);
 
         StartCoroutine(SpawnEnemy());
+    }
+
+
+    IEnumerator SpawnPowerUp()
+    {
+        // wait 5 - 10 sec
+        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+
+        int i = UnityEngine.Random.Range(0, powerups.Length); 
+        InitEnemy(powerups[i]);
+
+        StartCoroutine(SpawnPowerUp());
     }
 
 }
