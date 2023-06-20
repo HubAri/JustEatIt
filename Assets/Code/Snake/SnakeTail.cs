@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SnakeTail : MonoBehaviour
@@ -16,6 +14,9 @@ public class SnakeTail : MonoBehaviour
     public int snakeLength;
 
     public SnakeMove snakeMove;
+    public bool powerUpActivated = false;
+
+
 
     private Dictionary<int, Transform> snakeTails = new();
     private List<Vector2> positions = new();
@@ -47,23 +48,23 @@ public class SnakeTail : MonoBehaviour
 
             distance -= circleDiameter;
         }
-        
+
         for (int i = 0; i < snakeTails.Count; i++)
         {
             var item = snakeTails.ElementAt(i);
             var itemValue = item.Value;
 
-            itemValue.position = (Vector3)Vector2.Lerp(positions[i+1], positions[i], distance / circleDiameter) + new Vector3(0f, 0f, i * 0.1f); // Move all Tails to pos of previous and offset z-axis
+            itemValue.position = (Vector3)Vector2.Lerp(positions[i + 1], positions[i], distance / circleDiameter) + new Vector3(0f, 0f, i * 0.1f); // Move all Tails to pos of previous and offset z-axis
         }
 
     }
 
     public void AddTail()
     {
-        Transform tail = Instantiate(SnakeTailGfx, positions[positions.Count-1], transform.rotation, transform); // Create Tail
+        Transform tail = Instantiate(SnakeTailGfx, positions[positions.Count - 1], transform.rotation, transform); // Create Tail
         snakeTails.Add(tail.gameObject.GetInstanceID(), tail);
         positions.Add(tail.position);
-        snakeLength = snakeTails.Count+1;
+        snakeLength = snakeTails.Count + 1;
 
     }
 
@@ -91,13 +92,43 @@ public class SnakeTail : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-        { // Game over
-            Debug.Log("Game over");
-            GameObject snake = gameObject;
-            Destroy(snake);
-            Time.timeScale = 0;
+        {
+            if (!powerUpActivated)
+            {
+
+                // Game over
+                Debug.Log("Game over");
+                GameObject snake = gameObject;
+                Destroy(snake);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+
+            }
         }
+        else if (collision.gameObject.CompareTag("PowerUp"))
+        {
+            Destroy(collision.gameObject);
+
+            StartCoroutine(WaitPowerUp());
+
+
+        }
+
+
     }
 
+
+
+    IEnumerator WaitPowerUp()
+    {
+        powerUpActivated = true;
+
+        // wait 10 sec
+        yield return new WaitForSeconds(10 * 80 * Time.fixedDeltaTime);
+        powerUpActivated = false;
+    }
 
 }

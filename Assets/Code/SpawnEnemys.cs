@@ -6,6 +6,7 @@ using UnityEngine;
 public class SpawnEnemys : MonoBehaviour
 {
     public GameObject[] enemys;
+    public GameObject[] powerups;
 
     private Vector2 screenBounds;
 
@@ -14,6 +15,7 @@ public class SpawnEnemys : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnPowerUp());
 
     }
 
@@ -28,16 +30,19 @@ public class SpawnEnemys : MonoBehaviour
         {
             x = UnityEngine.Random.Range(-2f * screenBounds.x, -1.5f * screenBounds.x);
             y = UnityEngine.Random.Range(-screenBounds.y, screenBounds.y);
-            
-        } else if (r == 1)
+
+        }
+        else if (r == 1)
         {
             x = UnityEngine.Random.Range(1.5f * screenBounds.x, 2f * screenBounds.x);
             y = UnityEngine.Random.Range(-screenBounds.y, screenBounds.y);
-        } else if (r == 2)
+        }
+        else if (r == 2)
         {
             x = UnityEngine.Random.Range(-screenBounds.x, screenBounds.x);
             y = UnityEngine.Random.Range(-1.5f * screenBounds.y, -2f * screenBounds.y);
-        } else
+        }
+        else
         {
             x = UnityEngine.Random.Range(-screenBounds.x, screenBounds.x);
             y = UnityEngine.Random.Range(1.5f * screenBounds.y, 2f * screenBounds.y);
@@ -53,11 +58,23 @@ public class SpawnEnemys : MonoBehaviour
     {
         // wait 5 - 10 sec
         yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f) * 80 * Time.fixedDeltaTime); //set random time to spawn
-        
+
         int i = UnityEngine.Random.Range(0, enemys.Length);
         InitEnemy(enemys[i]);
 
         StartCoroutine(SpawnEnemy());
+    }
+
+
+    IEnumerator SpawnPowerUp()
+    {
+        // wait 10 - 20 sec
+        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+
+        int i = UnityEngine.Random.Range(0, powerups.Length);
+        InitEnemy(powerups[i]);
+
+        StartCoroutine(SpawnPowerUp());
     }
 
 }

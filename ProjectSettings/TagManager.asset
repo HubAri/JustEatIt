@@ -8,6 +8,7 @@ TagManager:
   - posCol
   - negCol
   - Enemy
+  - PowerUp
   layers:
   - Default
   - TransparentFX

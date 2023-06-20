@@ -17,8 +17,11 @@ public class TailCollision : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            // Destroy body parts
-            snakeTail.DestroyBodyParts(gameObject.GetInstanceID());
+            if (!snakeTail.powerUpActivated)
+            {
+                // Destroy body parts
+                snakeTail.DestroyBodyParts(gameObject.GetInstanceID());
+            }
         }
     }
 }
