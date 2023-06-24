@@ -9,6 +9,7 @@ TagManager:
   - negCol
   - Enemy
   - PowerUp
+  - Body
   layers:
   - Default
   - TransparentFX
