@@ -7,6 +7,7 @@ using UnityEngine;
 public class SnakeTail : MonoBehaviour
 {
 
+    public Transform SnakeHeadGfx;
     public Transform SnakeTailGfx;
     private float circleDiameter = 0.32f;
 
@@ -17,6 +18,8 @@ public class SnakeTail : MonoBehaviour
     public bool powerUpActivated = false;
 
 
+    [SerializeField]
+    private Sprite Head, HeadSpikes, Body, BodySpikes;
 
     private Dictionary<int, Transform> snakeTails = new();
     private List<Vector2> positions = new();
@@ -126,8 +129,26 @@ public class SnakeTail : MonoBehaviour
     {
         powerUpActivated = true;
 
+        // Change Head
+        if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+            SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
+        // Change Bodys
+        GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
+        foreach (GameObject body in bodyParts)
+            body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
+        
+
         // wait 10 sec
         yield return new WaitForSeconds(10 * 80 * Time.fixedDeltaTime);
+
+        // Change Head
+        if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+            SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
+        // Change Bodys
+        GameObject[] newBodyParts = GameObject.FindGameObjectsWithTag("Body");
+        foreach (GameObject body in newBodyParts)
+            body.GetComponent<SpriteRenderer>().sprite = Body;
+
         powerUpActivated = false;
     }
 

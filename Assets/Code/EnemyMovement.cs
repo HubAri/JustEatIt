@@ -135,7 +135,6 @@ public class EnemyMovement : MonoBehaviour
 
             // Enemy bounces off Enemy
             Vector2 C = collision.contacts[0].point;
-
             Vector2 N = (C - (Vector2)collision.transform.position).normalized;
             Vector2 R = (Vector2)direction - 2 * (Vector2.Dot(direction, N)) * N;
             direction = R;
