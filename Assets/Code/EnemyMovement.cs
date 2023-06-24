@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static Unity.Burst.Intrinsics.X86;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
         radius = GetComponent<CircleCollider2D>().radius;
 
         SetSpawnDirectionForEnemy();
+
     }
 
     private void Update()
@@ -46,16 +49,37 @@ public class EnemyMovement : MonoBehaviour
                 // was inside, touches border
                 if (wasIn)
                 {
-                    if (Mathf.Abs(transform.position.x) >= Mathf.Abs(screenBounds.x - radius)) // collision left or right
+
+                    float overShootHR = (transform.position.x + radius) - screenBounds.x;
+                    float overShootHL = -screenBounds.x - (transform.position.x - radius);
+                    float overShootVB = (transform.position.y + radius) - screenBounds.y;
+                    float overShootVT = -screenBounds.y - (transform.position.y - radius);
+
+                    if (overShootHR > 0)
                     {
-                        // calculate new direction
+                        // right
+                        transform.position -= new Vector3(overShootHR, 0, 0);
                         direction = Vector3.Reflect(direction.normalized, new Vector3(1, 0, 0));
                     }
-                    else if (Mathf.Abs(transform.position.y) >= Mathf.Abs(screenBounds.y - radius)) // collision top or bottom
+                    if (overShootHL > 0)
                     {
-                        // calculate new direction
+                        // left
+                        transform.position += new Vector3(overShootHL, 0, 0);
+                        direction = Vector3.Reflect(direction.normalized, new Vector3(1, 0, 0));
+                    }
+                    if (overShootVB > 0)
+                    {
+                        // top
+                        transform.position -= new Vector3(0, overShootVB, 0);
                         direction = Vector3.Reflect(direction.normalized, new Vector3(0, 1, 0));
                     }
+                    if (overShootVT > 0)
+                    {
+                        // bottom
+                        transform.position += new Vector3(0, overShootVT, 0);
+                        direction = Vector3.Reflect(direction.normalized, new Vector3(0, 1, 0));
+                    }
+
                 }
             }
         }
@@ -81,13 +105,42 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp"))
         {
+            Collider2D collider = collision.collider;
+            float otherRadius = 0f;
+
+            if (collider is CircleCollider2D circleCollider)
+                otherRadius = circleCollider.radius;
+
+            float dx = transform.position.x - collision.transform.position.x;
+            float dy = transform.position.y - collision.transform.position.y;
+            float dist = Mathf.Sqrt(dx * dx + dy * dy);
+            float overlap = radius + otherRadius - dist;
+
+            float angle = Mathf.Atan2(dy, dx);
+            float cosa = Mathf.Cos(angle);
+            float sina = Mathf.Sin(angle);
+
+            float overlapX = overlap * cosa;
+            float overlapY = overlap * sina;
+            float posXNew = transform.position.x + overlapX / 2;
+            float posYNew = transform.position.y + overlapY / 2;
+            float otherPosXNew = collision.transform.position.x - overlapX / 2;
+            float otherPosYNew = collision.transform.position.y - overlapY / 2;
+            transform.position = new Vector3(posXNew, posYNew, 0);
+            collision.transform.position = new Vector3(otherPosXNew, otherPosYNew, 0);
+
+
+
             // Enemy bounces off Enemy
             Vector2 C = collision.contacts[0].point;
-            Vector2 N = (C - (Vector2) collision.transform.position).normalized;
-            Vector2 R = (Vector2) direction - 2 * (Vector2.Dot(direction, N)) * N;
+
+            Vector2 N = (C - (Vector2)collision.transform.position).normalized;
+            Vector2 R = (Vector2)direction - 2 * (Vector2.Dot(direction, N)) * N;
             direction = R;
+
+
         }
     }
 
