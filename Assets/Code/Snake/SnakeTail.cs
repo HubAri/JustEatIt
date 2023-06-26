@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SnakeTail : MonoBehaviour
 {
@@ -103,6 +104,7 @@ public class SnakeTail : MonoBehaviour
                 Debug.Log("Game over");
                 GameObject snake = gameObject;
                 Destroy(snake);
+                SceneManager.LoadScene(nameof(EndMenu));
                 Time.timeScale = 0;
             }
             else
