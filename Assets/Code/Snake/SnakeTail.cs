@@ -68,7 +68,6 @@ public class SnakeTail : MonoBehaviour
         snakeTails.Add(tail.gameObject.GetInstanceID(), tail);
         positions.Add(tail.position);
         snakeLength = snakeTails.Count + 1;
-
     }
 
     private float SetcircleDiameterBasedOnSpeed(float speed, float maxSpeed, float minSpeed)
@@ -104,6 +103,7 @@ public class SnakeTail : MonoBehaviour
                 GameObject snake = gameObject;
                 Destroy(snake);
                 Time.timeScale = 0;
+                FindObjectOfType<AudioManager>().Play("End");
             }
             else
             {
@@ -134,6 +134,7 @@ public class SnakeTail : MonoBehaviour
             SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
         // Change Bodys
         GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
+        FindObjectOfType<AudioManager>().Play("Spikes");
         foreach (GameObject body in bodyParts)
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
         
