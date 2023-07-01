@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< Updated upstream
   tags: []
+=======
+  tags:
+  - normalCol
+  - posCol
+  - negCol
+  - Enemy
+  - PowerUp
+  - Body
+  - StationaryEnemy
+  - QuickEnemy
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
