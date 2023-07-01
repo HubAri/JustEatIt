@@ -119,6 +119,14 @@ public class SnakeTail : MonoBehaviour
 
 
         }
+        else if (collision.gameObject.CompareTag("StationaryEnemy"))
+        {
+            Debug.Log("Game over");
+            GameObject snake = gameObject;
+            Destroy(snake);
+            Time.timeScale = 0;
+            FindObjectOfType<AudioManager>().Play("End");
+        }
 
 
     }

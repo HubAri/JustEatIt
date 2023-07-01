@@ -87,11 +87,11 @@ public class EnemyMovement : MonoBehaviour
         // move Enemy
         transform.position += enemySpeed * Time.deltaTime * direction;
 
-        // rotate Enemy
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle-90);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
+        // rotate Enemy     
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle - 90);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        
     }
 
     private void SetSpawnDirectionForEnemy()

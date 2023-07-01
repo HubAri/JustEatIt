@@ -16,7 +16,7 @@ public class SpawnEnemys : MonoBehaviour
 
         StartCoroutine(SpawnEnemy());
         StartCoroutine(SpawnPowerUp());
-
+        
     }
 
     private void InitEnemy(GameObject enemy)
@@ -65,7 +65,7 @@ public class SpawnEnemys : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-
+  
     IEnumerator SpawnPowerUp()
     {
         // wait 10 - 20 sec
