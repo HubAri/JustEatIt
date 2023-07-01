@@ -1166,14 +1166,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Spikes
     clip: {fileID: 8300000, guid: 32bbd140ef7094f4386487acc9fed080, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.5
+    pitch: 0.5
     loop: 0
     source: {fileID: 0}
   - name: Background
     clip: {fileID: 8300000, guid: 59239b027015ad64a9909dab6e007f71, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.25
+    pitch: 0.25
     loop: 1
     source: {fileID: 0}
 --- !u!4 &1992682548
