@@ -20,6 +20,7 @@ public class TailCollision : MonoBehaviour
             if (!snakeTail.powerUpActivated)
             {
                 // Destroy body parts
+                FindObjectOfType<AudioManager>().Play("Ow");
                 snakeTail.DestroyBodyParts(gameObject.GetInstanceID());
             }
         }
