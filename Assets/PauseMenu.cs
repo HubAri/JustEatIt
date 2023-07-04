@@ -4,49 +4,53 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
-{
-    public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
+{  
+    public GameObject menuPauseObject; // drag and drop pause menu into editor
+    public static bool pausedGame = false;
 
     // Update is called once per frame
+    //check for Escape Input to open Ingame-Menu
     void Update()
     {
        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
+            if (pausedGame) //select method according to pausedGame bool 
             {
-                Resume();
+                ResumeGame();
             }else
             {
-                Pause();
+                Freeze();
             }
         }
     }
 
-
-    public void Resume()
+    //disable menu and continue with normal timeScale
+    public void ResumeGame()
     {
-        pauseMenuUI.SetActive(false);
+        pausedGame = false;
+        menuPauseObject.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
     }
 
-    void Pause()
+    //enable menu and freeze screen / pause
+    void Freeze()
     {
-        pauseMenuUI.SetActive(true);
+        pausedGame = true;
+        menuPauseObject.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
     }
 
+    // end application
     public void QuitGame()
     {
         Application.Quit();
     }
 
+    //load menu scene and put parameters back to default
     public void ChangeToMenu()
     {
-        GameIsPaused = false;
-        pauseMenuUI.SetActive(false);
+        pausedGame = false;
+        menuPauseObject.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }

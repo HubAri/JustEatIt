@@ -493,7 +493,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1693325063}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Resume
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1818,7 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2db445455305404e8b5e7ae748d1480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1716436215}
+  menuPauseObject: {fileID: 1716436215}
 --- !u!1 &1716436215
 GameObject:
   m_ObjectHideFlags: 0
