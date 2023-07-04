@@ -7,11 +7,15 @@ public class EndMenu : MonoBehaviour
 {
     public void ReplayGame()
     {
-        SceneManager.LoadScene("Game");
+        Debug.Log("Replay Game pressed");
+        Time.timeScale = 1.0f;
+        var activeScene = SceneManager.GetActiveScene();   
+        SceneManager.LoadScene(activeScene.buildIndex);
     }
 
     public void QuitGame()
     {
+        Debug.Log("Quit Game pressed");
         Application.Quit();
     }
 }

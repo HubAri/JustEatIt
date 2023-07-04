@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SnakeTail : MonoBehaviour
 {
@@ -21,6 +20,9 @@ public class SnakeTail : MonoBehaviour
 
     [SerializeField]
     private Sprite Head, HeadSpikes, Body, BodySpikes;
+
+    [SerializeField]
+    private GameObject EndMenu;
 
     private Dictionary<int, Transform> snakeTails = new();
     private List<Vector2> positions = new();
@@ -104,11 +106,11 @@ public class SnakeTail : MonoBehaviour
                 Debug.Log("Game over");
                 GameObject snake = gameObject;
                 Destroy(snake);
-                SceneManager.LoadScene(nameof(EndMenu));
                 Time.timeScale = 0;
                 FindObjectOfType<AudioManager>().Stop("Background");
                 FindObjectOfType<AudioManager>().Stop("Ow");
                 FindObjectOfType<AudioManager>().Play("End");
+                EndMenu.SetActive(true);
             }
             else
             {
@@ -132,6 +134,7 @@ public class SnakeTail : MonoBehaviour
             Time.timeScale = 0;
             FindObjectOfType<AudioManager>().Stop("Background");
             FindObjectOfType<AudioManager>().Play("End");
+            EndMenu.SetActive(true);
         }
 
 
