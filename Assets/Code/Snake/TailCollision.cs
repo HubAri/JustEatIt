@@ -15,11 +15,12 @@ public class TailCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("StationaryEnemy"))
         {
             if (!snakeTail.powerUpActivated)
             {
                 // Destroy body parts
+                FindObjectOfType<AudioManager>().Play("Ow");
                 snakeTail.DestroyBodyParts(gameObject.GetInstanceID());
             }
         }

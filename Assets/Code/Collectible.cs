@@ -66,14 +66,17 @@ public class Collectible : MonoBehaviour
                 score.IncreaseScore(snakeTail.snakeLength * 10);
                 snakeTail.AddTail();
                 spawnCollectibles.SpawnNeut();
+                FindObjectOfType<AudioManager>().Play("Eat");
             }
             else if (gameObject.CompareTag("posCol"))
             {
                 score.IncreaseScore(snakeTail.snakeLength * 50);
+                FindObjectOfType<AudioManager>().Play("Joy");
             }
             else if (gameObject.CompareTag("negCol"))
             {
                 score.IncreaseScore(-250);
+                FindObjectOfType<AudioManager>().Play("Disgust");
             }
 
             Destroy(this.gameObject, 0.02f);
