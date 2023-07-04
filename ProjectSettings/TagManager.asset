@@ -11,6 +11,7 @@ TagManager:
   - PowerUp
   - Body
   - StationaryEnemy
+  - QuickEnemy
   layers:
   - Default
   - TransparentFX

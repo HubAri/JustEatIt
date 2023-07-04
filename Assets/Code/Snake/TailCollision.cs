@@ -15,7 +15,7 @@ public class TailCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("StationaryEnemy"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("StationaryEnemy") || collision.CompareTag("QuickEnemy"))
         {
             if (!snakeTail.powerUpActivated)
             {

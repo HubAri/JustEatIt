@@ -131,6 +131,27 @@ public class SnakeTail : MonoBehaviour
             FindObjectOfType<AudioManager>().Stop("Background");
             FindObjectOfType<AudioManager>().Play("End");
         }
+        else if (collision.gameObject.CompareTag("QuickEnemy"))
+        {
+            if (!powerUpActivated)
+            {
+
+                // Game over
+                Debug.Log("Game over");
+                GameObject snake = gameObject;
+                Destroy(snake);
+                Time.timeScale = 0;
+                FindObjectOfType<AudioManager>().Stop("Background");
+                FindObjectOfType<AudioManager>().Play("End");
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+
+            }
+
+
+        }
 
 
     }

@@ -7,6 +7,7 @@ public class SpawnEnemys : MonoBehaviour
 {
     public GameObject[] enemys;
     public GameObject[] powerups;
+    public GameObject[] quickEnemies;
 
     private Vector2 screenBounds;
 
@@ -16,7 +17,8 @@ public class SpawnEnemys : MonoBehaviour
 
         StartCoroutine(SpawnEnemy());
         StartCoroutine(SpawnPowerUp());
-        
+        StartCoroutine(SpawnQuickEnemy());
+
     }
 
     private void InitEnemy(GameObject enemy)
@@ -65,7 +67,19 @@ public class SpawnEnemys : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-  
+    IEnumerator SpawnQuickEnemy()
+    {
+        // wait 5 - 10 sec
+        yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+
+        int i = UnityEngine.Random.Range(0, quickEnemies.Length);
+        InitEnemy(quickEnemies[i]);
+
+        StartCoroutine(SpawnQuickEnemy());
+    }
+
+
+
     IEnumerator SpawnPowerUp()
     {
         // wait 10 - 20 sec
