@@ -107,10 +107,10 @@ public class SnakeTail : MonoBehaviour
                 GameObject snake = gameObject;
                 Destroy(snake);
                 Time.timeScale = 0;
+                EndMenu.SetActive(true);
                 FindObjectOfType<AudioManager>().Stop("Background");
                 FindObjectOfType<AudioManager>().Stop("Ow");
                 FindObjectOfType<AudioManager>().Play("End");
-                EndMenu.SetActive(true);
             }
             else
             {
@@ -132,9 +132,9 @@ public class SnakeTail : MonoBehaviour
             GameObject snake = gameObject;
             Destroy(snake);
             Time.timeScale = 0;
+            EndMenu.SetActive(true);
             FindObjectOfType<AudioManager>().Stop("Background");
             FindObjectOfType<AudioManager>().Play("End");
-            EndMenu.SetActive(true);
         }
 
 
