@@ -12,6 +12,9 @@ public class SnakeMove : MonoBehaviour
 
     public float rotaionSpeed = 200f;
 
+    public Animator animator;
+    private SnakeTail snakeTail;
+
     [HideInInspector]
     public float speed;
 
@@ -27,6 +30,14 @@ public class SnakeMove : MonoBehaviour
     private void Update()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        snakeTail = GameObject.Find("Snake").GetComponent<SnakeTail>();
+        if (snakeTail.powerUpActivated)
+        {
+            animator.SetBool("PowerUpActive", true);
+        }
+        else {
+            animator.SetBool("PowerUpActive", false);
+        }
     }
 
     private void FixedUpdate()

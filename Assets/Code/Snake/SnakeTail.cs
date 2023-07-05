@@ -17,6 +17,7 @@ public class SnakeTail : MonoBehaviour
     public SnakeMove snakeMove;
     public bool powerUpActivated = false;
 
+    public Animator animator;
 
     [SerializeField]
     private Sprite Head, HeadSpikes, Body, BodySpikes;
@@ -140,6 +141,7 @@ public class SnakeTail : MonoBehaviour
     IEnumerator WaitPowerUp()
     {
         powerUpActivated = true;
+        
 
         // Change Head
         if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
@@ -150,7 +152,8 @@ public class SnakeTail : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Spikes");
         foreach (GameObject body in bodyParts)
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
-        
+        // animator.SetBool("PowerUpActive", true);
+
 
         // wait 10 sec
         yield return new WaitForSeconds(10 * 80 * Time.fixedDeltaTime);
@@ -165,6 +168,7 @@ public class SnakeTail : MonoBehaviour
             body.GetComponent<SpriteRenderer>().sprite = Body;
 
         powerUpActivated = false;
+        // animator.SetBool("PowerUpActive", false);
     }
 
 }

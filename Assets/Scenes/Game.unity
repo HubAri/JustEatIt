@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60739484}
   - component: {fileID: 60739485}
+  - component: {fileID: 60739486}
   m_Layer: 0
   m_Name: SnakeHeadGfx
   m_TagString: Untagged
@@ -207,6 +208,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &60739486
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60739483}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de7313c546855402293e2e17dce22a90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &85586148
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +700,7 @@ MonoBehaviour:
   maxDistance: 10
   minDistance: 1
   rotaionSpeed: 200
+  animator: {fileID: 60739486}
   speed: 0
 --- !u!4 &1321505568
 Transform:
@@ -788,6 +811,7 @@ MonoBehaviour:
   snakeLength: 0
   snakeMove: {fileID: 1321505567}
   powerUpActivated: 0
+  animator: {fileID: 2028802736}
   Head: {fileID: 21300000, guid: 2252414a52409da49af71480f4b75aaf, type: 3}
   HeadSpikes: {fileID: 21300000, guid: 08c708529dab96340af8aa11a06ad2a7, type: 3}
   Body: {fileID: 21300000, guid: 58700ef4b1853f140a07407a58fdb848, type: 3}
@@ -1209,6 +1233,7 @@ GameObject:
   - component: {fileID: 2028802733}
   - component: {fileID: 2028802734}
   - component: {fileID: 2028802735}
+  - component: {fileID: 2028802736}
   m_Layer: 0
   m_Name: SnakeTailGfx
   m_TagString: Body
@@ -1330,6 +1355,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7637916cc6786a342866781eb8eadf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2028802736
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028802731}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8cb72097eb1d0443ea2141077079abaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6577513075635890741
 PrefabInstance:
   m_ObjectHideFlags: 0
