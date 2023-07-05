@@ -14,7 +14,7 @@ public class Collectible : MonoBehaviour
     private SpawnCollectibles spawnCollectibles;
 
 
-    private float pushForce = 10f;
+    private float pushForce = 12f;
     private float smoothStopDuration = 1f;
 
     private Vector2 screenBounds;
