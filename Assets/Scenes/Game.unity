@@ -242,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 700, y: 665}
+  m_AnchoredPosition: {x: 728.4, y: 570.07}
   m_SizeDelta: {x: 1160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85586150
@@ -535,7 +535,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -582,12 +582,12 @@ PrefabInstance:
     - target: {fileID: 4320365590868096819, guid: 8621216db3c651f4299581e10216ef18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.03
+      value: 6.17
       objectReference: {fileID: 0}
     - target: {fileID: 4320365590868096819, guid: 8621216db3c651f4299581e10216ef18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.64
+      value: 2.38
       objectReference: {fileID: 0}
     - target: {fileID: 4320365590868096819, guid: 8621216db3c651f4299581e10216ef18,
         type: 3}
@@ -850,6 +850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1646998870}
   - component: {fileID: 1646998871}
+  - component: {fileID: 1646998872}
   m_Layer: 0
   m_Name: Enemys
   m_TagString: Untagged
@@ -888,6 +889,21 @@ MonoBehaviour:
   - {fileID: 4381071245987706818, guid: 8621216db3c651f4299581e10216ef18, type: 3}
   powerups:
   - {fileID: 4035325853155144375, guid: 83f08877664b07c4497ec727e9b2d5a8, type: 3}
+  enemyArrow: {fileID: 1646998872}
+--- !u!114 &1646998872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646998869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc03e0ae0738cf4a8174cb983ad9f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowObject: {fileID: 1813495200946661238, guid: aec4302e0b9c2bd47aa872a61ad1c2d9,
+    type: 3}
 --- !u!1 &1693325058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,12 +1068,12 @@ PrefabInstance:
     - target: {fileID: 4320365590868096819, guid: 8621216db3c651f4299581e10216ef18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.3806343
+      value: -5.01
       objectReference: {fileID: 0}
     - target: {fileID: 4320365590868096819, guid: 8621216db3c651f4299581e10216ef18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.130612
+      value: -2.41
       objectReference: {fileID: 0}
     - target: {fileID: 4320365590868096819, guid: 8621216db3c651f4299581e10216ef18,
         type: 3}

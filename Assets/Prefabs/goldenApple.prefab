@@ -185,3 +185,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ScorePopup: {fileID: 946206481397195637, guid: 607d8a5c0f8f6ca4ca2401984a7f7e88,
+    type: 3}

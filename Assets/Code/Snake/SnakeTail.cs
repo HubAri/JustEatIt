@@ -139,8 +139,8 @@ public class SnakeTail : MonoBehaviour
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
         
 
-        // wait 10 sec
-        yield return new WaitForSeconds(10 * 80 * Time.fixedDeltaTime);
+        // wait 5 sec
+        yield return new WaitForSeconds(5 * 80 * Time.fixedDeltaTime);
 
         // Change Head
         if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
