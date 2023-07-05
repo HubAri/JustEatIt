@@ -142,6 +142,7 @@ public class SnakeTail : MonoBehaviour
                 Destroy(snake);
                 Time.timeScale = 0;
                 FindObjectOfType<AudioManager>().Stop("Background");
+                FindObjectOfType<AudioManager>().Stop("Ow");
                 FindObjectOfType<AudioManager>().Play("End");
             }
             else
