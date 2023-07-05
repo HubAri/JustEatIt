@@ -11,6 +11,9 @@ public class SnakeTail : MonoBehaviour
     public Transform SnakeTailGfx;
     private float circleDiameter = 0.32f;
 
+    [SerializeField]
+    private PowerUpBar powerUpBar;
+
     [HideInInspector]
     public int snakeLength;
 
@@ -174,7 +177,7 @@ public class SnakeTail : MonoBehaviour
         
 
         // wait 5 sec
-        yield return new WaitForSeconds(5 * 80 * Time.fixedDeltaTime);
+        yield return StartCoroutine(powerUpBar.DecreaseScaleOverTime(5f));
 
         // Change Head
         if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
