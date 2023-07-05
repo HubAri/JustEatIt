@@ -19,7 +19,8 @@ public class SnakeTail : MonoBehaviour
 
     public SnakeMove snakeMove;
     public bool powerUpActivated = false;
-
+    private Coroutine powerUpCoroutine;
+    private Coroutine decreaseScaleOverTime;
 
     [SerializeField]
     private Sprite Head, HeadSpikes, Body, BodySpikes;
@@ -119,10 +120,23 @@ public class SnakeTail : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("PowerUp"))
         {
+
             Destroy(collision.gameObject);
 
-            StartCoroutine(WaitPowerUp());
+            if (powerUpCoroutine != null)
+            {
+                // if powerUpCoroutine is runnig -> stop
+                StopCoroutine(powerUpCoroutine);
 
+                if (decreaseScaleOverTime != null)
+                {
+                    StopCoroutine(decreaseScaleOverTime);
+                }
+                
+            }
+
+            powerUpCoroutine = StartCoroutine(WaitPowerUp());
+            
 
         }
         else if (collision.gameObject.CompareTag("StationaryEnemy"))
@@ -153,9 +167,7 @@ public class SnakeTail : MonoBehaviour
 
             }
 
-
         }
-
 
     }
 
@@ -174,10 +186,11 @@ public class SnakeTail : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Spikes");
         foreach (GameObject body in bodyParts)
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
-        
+
 
         // wait 5 sec
-        yield return StartCoroutine(powerUpBar.DecreaseScaleOverTime(5f));
+        decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(5f));
+        yield return decreaseScaleOverTime;
 
         // Change Head
         if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
