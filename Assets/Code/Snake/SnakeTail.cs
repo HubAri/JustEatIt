@@ -17,7 +17,7 @@ public class SnakeTail : MonoBehaviour
     public SnakeMove snakeMove;
     public bool powerUpActivated = false;
 
-    public Animator animator;
+    public Animator tailanimator;
 
     [SerializeField]
     private Sprite Head, HeadSpikes, Body, BodySpikes;
@@ -61,6 +61,18 @@ public class SnakeTail : MonoBehaviour
 
             itemValue.position = (Vector3)Vector2.Lerp(positions[i + 1], positions[i], distance / circleDiameter) + new Vector3(0f, 0f, i * 0.1f); // Move all Tails to pos of previous and offset z-axis
         }
+
+        if (powerUpActivated)
+        {
+            tailanimator.SetBool("PowerUpActivated", true);
+
+        }
+        else
+        {
+            tailanimator.SetBool("PowerUpActivated", false);
+
+        }
+
 
     }
 
@@ -144,23 +156,23 @@ public class SnakeTail : MonoBehaviour
         
 
         // Change Head
-        if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
-            SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
+        //if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+        //    SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
         // Change Bodys
         GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
         FindObjectOfType<AudioManager>().Stop("Background");
         FindObjectOfType<AudioManager>().Play("Spikes");
         foreach (GameObject body in bodyParts)
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
-        // animator.SetBool("PowerUpActive", true);
+        //tailanimator.SetBool("PowerUpActivated", true);
 
 
         // wait 10 sec
         yield return new WaitForSeconds(10 * 80 * Time.fixedDeltaTime);
 
         // Change Head
-        if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
-            SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
+        //if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+        //    SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
         // Change Bodys
         GameObject[] newBodyParts = GameObject.FindGameObjectsWithTag("Body");
         FindObjectOfType<AudioManager>().Play("Background");
@@ -168,7 +180,7 @@ public class SnakeTail : MonoBehaviour
             body.GetComponent<SpriteRenderer>().sprite = Body;
 
         powerUpActivated = false;
-        // animator.SetBool("PowerUpActive", false);
+       // tailanimator.SetBool("PowerUpActivated", false);
     }
 
 }

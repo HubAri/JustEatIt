@@ -12,7 +12,7 @@ public class SnakeMove : MonoBehaviour
 
     public float rotaionSpeed = 200f;
 
-    public Animator animator;
+    public Animator headanimator;
     private SnakeTail snakeTail;
 
     [HideInInspector]
@@ -33,10 +33,10 @@ public class SnakeMove : MonoBehaviour
         snakeTail = GameObject.Find("Snake").GetComponent<SnakeTail>();
         if (snakeTail.powerUpActivated)
         {
-            animator.SetBool("PowerUpActive", true);
+            headanimator.SetBool("PowerUpActive", true);
         }
         else {
-            animator.SetBool("PowerUpActive", false);
+            headanimator.SetBool("PowerUpActive", false);
         }
     }
 
