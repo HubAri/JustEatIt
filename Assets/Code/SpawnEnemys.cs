@@ -56,7 +56,8 @@ public class SpawnEnemys : MonoBehaviour
         GameObject obj = Instantiate(enemy, spawnVector, Quaternion.identity) as GameObject;
         obj.transform.parent = gameObject.transform;
 
-        if (enemy.CompareTag("Enemy")){
+        if (enemy.CompareTag("Enemy") || enemy.CompareTag("QuickEnemy"))
+        {
             // instantiate arrow
             enemyArrow.InstantiateArrow(region, obj);
         }

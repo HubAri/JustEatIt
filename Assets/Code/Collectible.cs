@@ -41,7 +41,7 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp") || collision.gameObject.CompareTag("QuickEnemy"))
         {
             HandleOverlap(collision);
 
