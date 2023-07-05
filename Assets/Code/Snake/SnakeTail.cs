@@ -27,6 +27,7 @@ public class SnakeTail : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        FindObjectOfType<AudioManager>().Play("Background");
         positions.Add(SnakeTailGfx.position); // Position of SnakeTail 0 (behind the head)
         AddTail();
         AddTail();
@@ -103,6 +104,8 @@ public class SnakeTail : MonoBehaviour
                 GameObject snake = gameObject;
                 Destroy(snake);
                 Time.timeScale = 0;
+                FindObjectOfType<AudioManager>().Stop("Background");
+                FindObjectOfType<AudioManager>().Stop("Ow");
                 FindObjectOfType<AudioManager>().Play("End");
             }
             else
@@ -116,6 +119,36 @@ public class SnakeTail : MonoBehaviour
             Destroy(collision.gameObject);
 
             StartCoroutine(WaitPowerUp());
+
+
+        }
+        else if (collision.gameObject.CompareTag("StationaryEnemy"))
+        {
+            Debug.Log("Game over");
+            GameObject snake = gameObject;
+            Destroy(snake);
+            Time.timeScale = 0;
+            FindObjectOfType<AudioManager>().Stop("Background");
+            FindObjectOfType<AudioManager>().Play("End");
+        }
+        else if (collision.gameObject.CompareTag("QuickEnemy"))
+        {
+            if (!powerUpActivated)
+            {
+
+                // Game over
+                Debug.Log("Game over");
+                GameObject snake = gameObject;
+                Destroy(snake);
+                Time.timeScale = 0;
+                FindObjectOfType<AudioManager>().Stop("Background");
+                FindObjectOfType<AudioManager>().Play("End");
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+
+            }
 
 
         }
@@ -134,6 +167,7 @@ public class SnakeTail : MonoBehaviour
             SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
         // Change Bodys
         GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
+        FindObjectOfType<AudioManager>().Stop("Background");
         FindObjectOfType<AudioManager>().Play("Spikes");
         foreach (GameObject body in bodyParts)
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
@@ -147,6 +181,7 @@ public class SnakeTail : MonoBehaviour
             SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
         // Change Bodys
         GameObject[] newBodyParts = GameObject.FindGameObjectsWithTag("Body");
+        FindObjectOfType<AudioManager>().Play("Background");
         foreach (GameObject body in newBodyParts)
             body.GetComponent<SpriteRenderer>().sprite = Body;
 

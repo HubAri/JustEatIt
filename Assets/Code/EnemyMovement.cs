@@ -7,6 +7,7 @@ using static Unity.Burst.Intrinsics.X86;
 public class EnemyMovement : MonoBehaviour
 {
     private float enemySpeed = 1f;
+    private float quickEnemySpeed = 4f;
     private float rotationSpeed = 5f;
 
     private Vector2 screenBounds;
@@ -86,12 +87,16 @@ public class EnemyMovement : MonoBehaviour
 
         // move Enemy
         transform.position += enemySpeed * Time.deltaTime * direction;
+        // move Spider
+        if (gameObject.CompareTag("QuickEnemy"))
+            transform.position += quickEnemySpeed * Time.deltaTime * direction;
 
-        // rotate Enemy
+
+        // rotate Enemy     
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle-90);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
+            Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle - 90);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        
     }
 
     private void SetSpawnDirectionForEnemy()
@@ -105,7 +110,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp") || collision.gameObject.CompareTag("QuickEnemy"))
         {
             Collider2D collider = collision.collider;
             float otherRadius = 0f;
