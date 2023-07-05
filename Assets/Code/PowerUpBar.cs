@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,35 +59,43 @@ public class PowerUpBar : MonoBehaviour
 
     private void PositionBar()
     {
-        RectTransform rectTransform = transform.parent.GetComponent<RectTransform>();
+        RectTransform rectTransformBG = transform.parent.GetComponent<RectTransform>();
+        RectTransform rectTransform = GetComponent<RectTransform>();
 
-        rectTransform.anchorMin = new Vector2(0f, 1f);
-        rectTransform.anchorMax = new Vector2(0f, 1f);
-        rectTransform.pivot = new Vector2(0f, 1f);
+        rectTransformBG.anchorMin = new Vector2(0f, 1f);
+        rectTransformBG.anchorMax = new Vector2(0f, 1f);
+        rectTransformBG.pivot = new Vector2(0f, 1f);
 
         float offsetXPercentage = 0.02f;  // 2% offset
         float offsetX = Screen.height * offsetXPercentage;
         float offsetYPercentage = 0.02f;  // 2% offset
         float offsetY = Screen.height * offsetYPercentage;
 
-        rectTransform.anchoredPosition = new Vector2(offsetX, -offsetY);
+        rectTransformBG.anchoredPosition = new Vector2(offsetX, -offsetY);
+
+        // center rectTransform in rectTransformBG
+        float offsetToBGX = (rectTransformBG.rect.width - rectTransform.rect.width) / 2f;
+        float offsetToBGY = rectTransform.anchoredPosition.y;  // Keep the existing y-position
+
+        rectTransform.anchoredPosition = new Vector2(offsetToBGX, offsetToBGY);
     }
+
 
     private void SetSizeBar()
     {
         RectTransform rectTransformBG = transform.parent.GetComponent<RectTransform>();
         RectTransform rectTransform = GetComponent<RectTransform>();
 
-        float offsetX = 0.98f;
-        float offsetY = 0.85f;
-
         float heightPercentage = 0.05f;  // 5% height
         float barHeightBG = Screen.height * heightPercentage;
-        float barHeight = barHeightBG * offsetY;
+
+        float offset = barHeightBG * 0.2f;
+
+        float barHeight = barHeightBG - offset;
 
         float widthPercentage = 0.15f;  // 15% width
         float barWidthtBG = Screen.width * widthPercentage;
-        float barWidth = barWidthtBG * offsetX;
+        float barWidth = barWidthtBG - offset;
 
         rectTransformBG.sizeDelta = new Vector2(rectTransformBG.sizeDelta.x, barHeightBG);
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, barHeight);
