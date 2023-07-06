@@ -17,6 +17,8 @@ public class Collectible : MonoBehaviour
     private float pushForce = 12f;
     private float smoothStopDuration = 1f;
 
+    private bool active = true;
+
     private Vector2 screenBounds;
     private float radius;
     private Vector2 awayDirection;
@@ -64,31 +66,35 @@ public class Collectible : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (gameObject.CompareTag("normalCol"))
+            if (active)
             {
-                int amount = snakeTail.snakeLength * 10;
-                score.IncreaseScore(amount);
-                snakeTail.AddTail();
-                ScorePopup.Create(this.gameObject.transform.position, amount, false);
-                spawnCollectibles.SpawnNeut();
-                FindObjectOfType<AudioManager>().Play("Eat");
+                active = false;
+                if (gameObject.CompareTag("normalCol"))
+                {
+                    int amount = snakeTail.snakeLength * 10;
+                    score.IncreaseScore(amount);
+                    snakeTail.AddTail();
+                    ScorePopup.Create(this.gameObject.transform.position, amount, false);
+                    spawnCollectibles.SpawnNeut();
+                    FindObjectOfType<AudioManager>().Play("Eat");
+                }
+                else if (gameObject.CompareTag("posCol"))
+                {
+                    int amount = snakeTail.snakeLength * 50;
+                    score.IncreaseScore(amount);
+                    ScorePopup.Create(this.gameObject.transform.position, amount, false);
+                    FindObjectOfType<AudioManager>().Play("Joy");
+                }
+                else if (gameObject.CompareTag("negCol"))
+                {
+                    int amount = -250;
+                    score.IncreaseScore(amount);
+                    ScorePopup.Create(this.gameObject.transform.position, amount, true);
+                    FindObjectOfType<AudioManager>().Play("Disgust");
+                }
+                Destroy(this.gameObject, 0.02f);
             }
-            else if (gameObject.CompareTag("posCol"))
-            {
-                int amount = snakeTail.snakeLength * 50;
-                score.IncreaseScore(amount);
-                ScorePopup.Create(this.gameObject.transform.position, amount, false);
-                FindObjectOfType<AudioManager>().Play("Joy");
-            }
-            else if (gameObject.CompareTag("negCol"))
-            {
-                int amount = -250;
-                score.IncreaseScore(amount);
-                ScorePopup.Create(this.gameObject.transform.position, amount, true);
-                FindObjectOfType<AudioManager>().Play("Disgust");
-            }
-
-            Destroy(this.gameObject, 0.02f);
+            
         }
     }
 
