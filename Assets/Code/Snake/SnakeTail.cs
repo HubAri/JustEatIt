@@ -174,7 +174,7 @@ public class SnakeTail : MonoBehaviour
         
 
         // wait 5 sec
-        yield return StartCoroutine(powerUpBar.DecreaseScaleOverTime(5f));
+        yield return StartCoroutine(powerUpBar.DecreaseScaleOverTime(8f));
 
         // Change Head
         if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
