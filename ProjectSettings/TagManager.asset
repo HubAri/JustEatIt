@@ -11,6 +11,7 @@ TagManager:
   - PowerUp
   - Body
   - StationaryEnemy
+  - QuickEnemy
   - EndGameCanvas
   layers:
   - Default
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Top
+    uniqueID: 3181436353
     locked: 0

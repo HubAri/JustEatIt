@@ -6,6 +6,9 @@ public class Collectible : MonoBehaviour
 {
     public AnimationCurve smoothStopCurve;
 
+    [SerializeField]
+    private ScorePopup ScorePopup;
+
     private Score score;
     private SnakeTail snakeTail;
     private SpawnCollectibles spawnCollectibles;
@@ -38,7 +41,7 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp") || collision.gameObject.CompareTag("QuickEnemy"))
         {
             HandleOverlap(collision);
 
@@ -63,19 +66,25 @@ public class Collectible : MonoBehaviour
         {
             if (gameObject.CompareTag("normalCol"))
             {
-                score.IncreaseScore(snakeTail.snakeLength * 10);
+                int amount = snakeTail.snakeLength * 10;
+                score.IncreaseScore(amount);
                 snakeTail.AddTail();
+                ScorePopup.Create(this.gameObject.transform.position, amount, false);
                 spawnCollectibles.SpawnNeut();
                 FindObjectOfType<AudioManager>().Play("Eat");
             }
             else if (gameObject.CompareTag("posCol"))
             {
-                score.IncreaseScore(snakeTail.snakeLength * 50);
+                int amount = snakeTail.snakeLength * 50;
+                score.IncreaseScore(amount);
+                ScorePopup.Create(this.gameObject.transform.position, amount, false);
                 FindObjectOfType<AudioManager>().Play("Joy");
             }
             else if (gameObject.CompareTag("negCol"))
             {
-                score.IncreaseScore(-250);
+                int amount = -250;
+                score.IncreaseScore(amount);
+                ScorePopup.Create(this.gameObject.transform.position, amount, true);
                 FindObjectOfType<AudioManager>().Play("Disgust");
             }
 

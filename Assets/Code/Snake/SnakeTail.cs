@@ -11,6 +11,9 @@ public class SnakeTail : MonoBehaviour
     public Transform SnakeTailGfx;
     private float circleDiameter = 0.32f;
 
+    [SerializeField]
+    private PowerUpBar powerUpBar;
+
     [HideInInspector]
     public int snakeLength;
 
@@ -136,6 +139,27 @@ public class SnakeTail : MonoBehaviour
             FindObjectOfType<AudioManager>().Stop("Background");
             FindObjectOfType<AudioManager>().Play("End");
         }
+        else if (collision.gameObject.CompareTag("QuickEnemy"))
+        {
+            if (!powerUpActivated)
+            {
+
+                // Game over
+                Debug.Log("Game over");
+                GameObject snake = gameObject;
+                Destroy(snake);
+                Time.timeScale = 0;
+                FindObjectOfType<AudioManager>().Stop("Background");
+                FindObjectOfType<AudioManager>().Play("End");
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+
+            }
+
+
+        }
 
 
     }
@@ -157,8 +181,8 @@ public class SnakeTail : MonoBehaviour
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
         
 
-        // wait 10 sec
-        yield return new WaitForSeconds(10 * 80 * Time.fixedDeltaTime);
+        // wait 5 sec
+        yield return StartCoroutine(powerUpBar.DecreaseScaleOverTime(5f));
 
         // Change Head
         if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)

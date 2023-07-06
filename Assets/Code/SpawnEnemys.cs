@@ -7,6 +7,10 @@ public class SpawnEnemys : MonoBehaviour
 {
     public GameObject[] enemys;
     public GameObject[] powerups;
+    public GameObject[] quickEnemies;
+
+    [SerializeField]
+    EnemyArrowSpawner enemyArrow;
 
     private Vector2 screenBounds;
 
@@ -16,33 +20,34 @@ public class SpawnEnemys : MonoBehaviour
 
         StartCoroutine(SpawnEnemy());
         StartCoroutine(SpawnPowerUp());
-        
+        StartCoroutine(SpawnQuickEnemy());
+
     }
 
     private void InitEnemy(GameObject enemy)
     {
 
-        int r = UnityEngine.Random.Range(0, 4);
+        int region = UnityEngine.Random.Range(0, 4);
         float x;
         float y;
         // divide spawn area into 4 parts
-        if (r == 0)
+        if (region == 0)  // left
         {
             x = UnityEngine.Random.Range(-2f * screenBounds.x, -1.5f * screenBounds.x);
             y = UnityEngine.Random.Range(-screenBounds.y, screenBounds.y);
 
         }
-        else if (r == 1)
+        else if (region == 1)  // right
         {
             x = UnityEngine.Random.Range(1.5f * screenBounds.x, 2f * screenBounds.x);
             y = UnityEngine.Random.Range(-screenBounds.y, screenBounds.y);
         }
-        else if (r == 2)
+        else if (region == 2)  // bottom
         {
             x = UnityEngine.Random.Range(-screenBounds.x, screenBounds.x);
             y = UnityEngine.Random.Range(-1.5f * screenBounds.y, -2f * screenBounds.y);
         }
-        else
+        else  // top
         {
             x = UnityEngine.Random.Range(-screenBounds.x, screenBounds.x);
             y = UnityEngine.Random.Range(1.5f * screenBounds.y, 2f * screenBounds.y);
@@ -51,13 +56,19 @@ public class SpawnEnemys : MonoBehaviour
         GameObject obj = Instantiate(enemy, spawnVector, Quaternion.identity) as GameObject;
         obj.transform.parent = gameObject.transform;
 
+        if (enemy.CompareTag("Enemy") || enemy.CompareTag("QuickEnemy"))
+        {
+            // instantiate arrow
+            enemyArrow.InstantiateArrow(region, obj);
+        }
+
     }
 
 
     IEnumerator SpawnEnemy()
     {
         // wait 5 - 10 sec
-        yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+        yield return new WaitForSeconds(UnityEngine.Random.Range(2f, 4f) * 80 * Time.fixedDeltaTime); //set random time to spawn
 
         int i = UnityEngine.Random.Range(0, enemys.Length);
         InitEnemy(enemys[i]);
@@ -65,11 +76,23 @@ public class SpawnEnemys : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-  
+    IEnumerator SpawnQuickEnemy()
+    {
+        // wait 5 - 10 sec
+        yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+
+        int i = UnityEngine.Random.Range(0, quickEnemies.Length);
+        InitEnemy(quickEnemies[i]);
+
+        StartCoroutine(SpawnQuickEnemy());
+    }
+
+
+
     IEnumerator SpawnPowerUp()
     {
-        // wait 10 - 20 sec
-        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+        // wait 15 - 30 sec
+        yield return new WaitForSeconds(UnityEngine.Random.Range(15f, 30f) * 80 * Time.fixedDeltaTime); //set random time to spawn
 
         int i = UnityEngine.Random.Range(0, powerups.Length);
         InitEnemy(powerups[i]);
