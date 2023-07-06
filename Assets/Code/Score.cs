@@ -11,7 +11,8 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-        PositionScoreText();
+        SetSizeScore();
+        PositionScore();
 
         scoreNum = 0;
         scoreText.text = "Score: " + scoreNum;
@@ -24,7 +25,12 @@ public class Score : MonoBehaviour
         scoreText.text = "Score: " + scoreNum;
     }
 
-    private void PositionScoreText()
+
+
+
+
+
+    private void PositionScore()
     {
         RectTransform rectTransform = scoreText.GetComponent<RectTransform>();
 
@@ -32,9 +38,28 @@ public class Score : MonoBehaviour
         rectTransform.anchorMax = new Vector2(1f, 1f);
         rectTransform.pivot = new Vector2(1f, 1f);
 
-        float offsetX = 30f;  // horizontal offset
-        float offsetY = 10f;  // vertical offset
+        float offsetXPercentage = 0.02f;  // 2% offset
+        float offsetX = Screen.height * offsetXPercentage;
+        float offsetYPercentage = 0.02f;  // 2% offset
+        float offsetY = Screen.height * offsetYPercentage;
 
         rectTransform.anchoredPosition = new Vector2(-offsetX, -offsetY);
+
+    }
+
+
+    private void SetSizeScore()
+    {
+        RectTransform rectTransform = scoreText.GetComponent<RectTransform>();
+
+        float heightPercentage = 0.05f;  // 5% height
+        float scoreHeight = Screen.height * heightPercentage;
+
+
+        float widthPercentage = 0.15f;  // 15% width
+        float scoreWidtht = Screen.width * widthPercentage;
+
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, scoreHeight);
+        rectTransform.sizeDelta = new Vector2(scoreWidtht, rectTransform.sizeDelta.y);
     }
 }
