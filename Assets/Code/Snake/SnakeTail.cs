@@ -106,14 +106,7 @@ public class SnakeTail : MonoBehaviour
             {
 
                 // Game over
-                Debug.Log("Game over");
-                GameObject snake = gameObject;
-                Destroy(snake);
-                Time.timeScale = 0;
-                EndMenu.SetActive(true);
-                FindObjectOfType<AudioManager>().Stop("Background");
-                FindObjectOfType<AudioManager>().Stop("Ow");
-                FindObjectOfType<AudioManager>().Play("End");
+                GameOver();
             }
             else
             {
@@ -131,13 +124,7 @@ public class SnakeTail : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("StationaryEnemy"))
         {
-            Debug.Log("Game over");
-            GameObject snake = gameObject;
-            Destroy(snake);
-            Time.timeScale = 0;
-            EndMenu.SetActive(true);
-            FindObjectOfType<AudioManager>().Stop("Background");
-            FindObjectOfType<AudioManager>().Play("End");
+            GameOver();
         }
         else if (collision.gameObject.CompareTag("QuickEnemy"))
         {
@@ -145,12 +132,7 @@ public class SnakeTail : MonoBehaviour
             {
 
                 // Game over
-                Debug.Log("Game over");
-                GameObject snake = gameObject;
-                Destroy(snake);
-                Time.timeScale = 0;
-                FindObjectOfType<AudioManager>().Stop("Background");
-                FindObjectOfType<AudioManager>().Play("End");
+                GameOver();
             }
             else
             {
@@ -164,7 +146,17 @@ public class SnakeTail : MonoBehaviour
 
     }
 
-
+    private void GameOver()
+    {
+        Debug.Log("Game over");
+        GameObject snake = gameObject;
+        Destroy(snake);
+        Time.timeScale = 0;
+        EndMenu.SetActive(true);
+        FindObjectOfType<AudioManager>().Stop("Background");
+        FindObjectOfType<AudioManager>().Stop("Ow");
+        FindObjectOfType<AudioManager>().Play("End");
+    }
 
     IEnumerator WaitPowerUp()
     {
