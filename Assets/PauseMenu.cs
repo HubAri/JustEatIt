@@ -17,7 +17,8 @@ public class PauseMenu : MonoBehaviour
             if (pausedGame) //select method according to pausedGame bool 
             {
                 ResumeGame();
-            }else
+            }
+            else
             {
                 Freeze();
             }
@@ -27,6 +28,7 @@ public class PauseMenu : MonoBehaviour
     //disable menu and continue with normal timeScale
     public void ResumeGame()
     {
+        FindObjectOfType<AudioManager>().UnPause("Background");
         pausedGame = false;
         menuPauseObject.SetActive(false);
         Time.timeScale = 1f;
@@ -35,6 +37,7 @@ public class PauseMenu : MonoBehaviour
     //enable menu and freeze screen / pause
     void Freeze()
     {
+        FindObjectOfType<AudioManager>().Pause("Background");
         pausedGame = true;
         menuPauseObject.SetActive(true);
         Time.timeScale = 0f;

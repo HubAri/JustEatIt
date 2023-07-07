@@ -25,6 +25,9 @@ public class SnakeTail : MonoBehaviour
     [SerializeField]
     private Sprite Head, HeadSpikes, Body, BodySpikes;
 
+    [SerializeField]
+    private GameObject EndMenu;
+
     private Dictionary<int, Transform> snakeTails = new();
     private List<Vector2> positions = new();
 
@@ -104,13 +107,7 @@ public class SnakeTail : MonoBehaviour
             {
 
                 // Game over
-                Debug.Log("Game over");
-                GameObject snake = gameObject;
-                Destroy(snake);
-                Time.timeScale = 0;
-                FindObjectOfType<AudioManager>().Stop("Background");
-                FindObjectOfType<AudioManager>().Stop("Ow");
-                FindObjectOfType<AudioManager>().Play("End");
+                GameOver();
             }
             else
             {
@@ -141,12 +138,7 @@ public class SnakeTail : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("StationaryEnemy"))
         {
-            Debug.Log("Game over");
-            GameObject snake = gameObject;
-            Destroy(snake);
-            Time.timeScale = 0;
-            FindObjectOfType<AudioManager>().Stop("Background");
-            FindObjectOfType<AudioManager>().Play("End");
+            GameOver();
         }
         else if (collision.gameObject.CompareTag("QuickEnemy"))
         {
@@ -154,12 +146,7 @@ public class SnakeTail : MonoBehaviour
             {
 
                 // Game over
-                Debug.Log("Game over");
-                GameObject snake = gameObject;
-                Destroy(snake);
-                Time.timeScale = 0;
-                FindObjectOfType<AudioManager>().Stop("Background");
-                FindObjectOfType<AudioManager>().Play("End");
+                GameOver();
             }
             else
             {
@@ -171,7 +158,17 @@ public class SnakeTail : MonoBehaviour
 
     }
 
-
+    private void GameOver()
+    {
+        Debug.Log("Game over");
+        GameObject snake = gameObject;
+        Destroy(snake);
+        Time.timeScale = 0;
+        EndMenu.SetActive(true);
+        FindObjectOfType<AudioManager>().Stop("Background");
+        FindObjectOfType<AudioManager>().Stop("Ow");
+        FindObjectOfType<AudioManager>().Play("End");
+    }
 
     IEnumerator WaitPowerUp()
     {
@@ -182,14 +179,14 @@ public class SnakeTail : MonoBehaviour
             SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
         // Change Bodys
         GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
-        FindObjectOfType<AudioManager>().Stop("Background");
+        FindObjectOfType<AudioManager>().Pause("Background");
         FindObjectOfType<AudioManager>().Play("Spikes");
         foreach (GameObject body in bodyParts)
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
 
 
         // wait 5 sec
-        decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(5f));
+        decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(8f));
         yield return decreaseScaleOverTime;
 
         // Change Head
@@ -197,7 +194,7 @@ public class SnakeTail : MonoBehaviour
             SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
         // Change Bodys
         GameObject[] newBodyParts = GameObject.FindGameObjectsWithTag("Body");
-        FindObjectOfType<AudioManager>().Play("Background");
+        FindObjectOfType<AudioManager>().UnPause("Background");
         foreach (GameObject body in newBodyParts)
             body.GetComponent<SpriteRenderer>().sprite = Body;
 

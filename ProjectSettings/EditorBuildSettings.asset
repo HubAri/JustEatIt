@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/EndMenu.unity
+    guid: e03b8f1f4505b5a4e9ec66445f863f04
+  - enabled: 1
     path: Assets/Scenes/HiddenLevel.unity
     guid: 82502d770fadf4444b586f4a4b813e42
   m_configObjects: {}
