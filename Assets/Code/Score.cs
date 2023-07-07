@@ -38,12 +38,9 @@ public class Score : MonoBehaviour
         rectTransform.anchorMax = new Vector2(1f, 1f);
         rectTransform.pivot = new Vector2(1f, 1f);
 
-        float offsetXPercentage = 0.02f;  // 2% offset
-        float offsetX = Screen.height * offsetXPercentage;
-        float offsetYPercentage = 0.02f;  // 2% offset
-        float offsetY = Screen.height * offsetYPercentage;
+        float offset = 30f;
 
-        rectTransform.anchoredPosition = new Vector2(-offsetX, -offsetY);
+        rectTransform.anchoredPosition = new Vector2(-offset, -offset);
 
     }
 
@@ -52,12 +49,8 @@ public class Score : MonoBehaviour
     {
         RectTransform rectTransform = scoreText.GetComponent<RectTransform>();
 
-        float heightPercentage = 0.05f;  // 5% height
-        float scoreHeight = Screen.height * heightPercentage;
-
-
-        float widthPercentage = 0.15f;  // 15% width
-        float scoreWidtht = Screen.width * widthPercentage;
+        float scoreHeight = 60f;
+        float scoreWidtht = 550f;
 
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, scoreHeight);
         rectTransform.sizeDelta = new Vector2(scoreWidtht, rectTransform.sizeDelta.y);

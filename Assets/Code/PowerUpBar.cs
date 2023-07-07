@@ -66,12 +66,9 @@ public class PowerUpBar : MonoBehaviour
         rectTransformBG.anchorMax = new Vector2(0f, 1f);
         rectTransformBG.pivot = new Vector2(0f, 1f);
 
-        float offsetXPercentage = 0.02f;  // 2% offset
-        float offsetX = Screen.height * offsetXPercentage;
-        float offsetYPercentage = 0.02f;  // 2% offset
-        float offsetY = Screen.height * offsetYPercentage;
+        float offset = 30f;
 
-        rectTransformBG.anchoredPosition = new Vector2(offsetX, -offsetY);
+        rectTransformBG.anchoredPosition = new Vector2(offset, -offset);
 
         // center rectTransform in rectTransformBG
         float offsetToBGX = (rectTransformBG.rect.width - rectTransform.rect.width) / 2f;
@@ -86,15 +83,12 @@ public class PowerUpBar : MonoBehaviour
         RectTransform rectTransformBG = transform.parent.GetComponent<RectTransform>();
         RectTransform rectTransform = GetComponent<RectTransform>();
 
-        float heightPercentage = 0.05f;  // 5% height
-        float barHeightBG = Screen.height * heightPercentage;
 
+        float barHeightBG = 60f;
         float offset = barHeightBG * 0.2f;
-
         float barHeight = barHeightBG - offset;
 
-        float widthPercentage = 0.15f;  // 15% width
-        float barWidthtBG = Screen.width * widthPercentage;
+        float barWidthtBG = 300f;
         float barWidth = barWidthtBG - offset;
 
         rectTransformBG.sizeDelta = new Vector2(rectTransformBG.sizeDelta.x, barHeightBG);
