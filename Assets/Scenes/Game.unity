@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60739484}
   - component: {fileID: 60739485}
+  - component: {fileID: 60739486}
   m_Layer: 0
   m_Name: SnakeHeadGfx
   m_TagString: Untagged
@@ -207,6 +208,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &60739486
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60739483}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 313961abeff494a84a33ca2424ff428f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &85586148
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +985,7 @@ PrefabInstance:
     - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
         type: 3}
@@ -1388,6 +1410,7 @@ MonoBehaviour:
   maxDistance: 10
   minDistance: 1
   rotaionSpeed: 200
+  headanimator: {fileID: 60739486}
   speed: 0
 --- !u!4 &1321505568
 Transform:
@@ -1823,79 +1846,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412504363}
   m_CullTransparentMesh: 1
---- !u!1001 &1613901444
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423671564273803622, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035325853155144375, guid: 83f08877664b07c4497ec727e9b2d5a8,
-        type: 3}
-      propertyPath: m_Name
-      value: PowerUp (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 83f08877664b07c4497ec727e9b2d5a8, type: 3}
 --- !u!1 &1623358734
 GameObject:
   m_ObjectHideFlags: 0

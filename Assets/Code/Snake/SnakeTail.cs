@@ -22,6 +22,7 @@ public class SnakeTail : MonoBehaviour
     private Coroutine powerUpCoroutine;
     private Coroutine decreaseScaleOverTime;
 
+
     [SerializeField]
     private Sprite Head, HeadSpikes, Body, BodySpikes;
 
@@ -173,10 +174,11 @@ public class SnakeTail : MonoBehaviour
     IEnumerator WaitPowerUp()
     {
         powerUpActivated = true;
+        
 
         // Change Head
-        if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
-            SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
+        //if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+        //    SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
         // Change Bodys
         GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
         FindObjectOfType<AudioManager>().Pause("Background");
@@ -185,13 +187,14 @@ public class SnakeTail : MonoBehaviour
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
 
 
+
         // wait 5 sec
         decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(8f));
         yield return decreaseScaleOverTime;
 
         // Change Head
-        if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
-            SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
+        //if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+        //    SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
         // Change Bodys
         GameObject[] newBodyParts = GameObject.FindGameObjectsWithTag("Body");
         FindObjectOfType<AudioManager>().UnPause("Background");
