@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7963473184741382834}
   - component: {fileID: 3916125533579840442}
   m_Layer: 0
-  m_Name: AnimPowerUp
-  m_TagString: PowerUp
+  m_Name: AnimSlowPowerUp
+  m_TagString: SlownessPowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,7 @@ Animator:
   m_GameObject: {fileID: 2482328284136040006}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28f84495eb71c7a4a8b146bb73684ba3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3214b46b81713b947bceac3b372c2831, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

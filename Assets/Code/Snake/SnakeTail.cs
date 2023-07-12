@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class SnakeTail : MonoBehaviour
@@ -133,8 +134,29 @@ public class SnakeTail : MonoBehaviour
                 
             }
 
-            powerUpCoroutine = StartCoroutine(WaitPowerUp());
+            powerUpCoroutine = StartCoroutine(WaitPowerUp(false));
             
+
+        }
+        else if (collision.gameObject.CompareTag("SlownessPowerUp"))
+        {
+
+            Destroy(collision.gameObject);
+
+            if (powerUpCoroutine != null)
+            {
+                // if powerUpCoroutine is runnig -> stop
+                StopCoroutine(powerUpCoroutine);
+
+                if (decreaseScaleOverTime != null)
+                {
+                    StopCoroutine(decreaseScaleOverTime);
+                }
+
+            }
+
+            powerUpCoroutine = StartCoroutine(WaitPowerUp(true));
+
 
         }
         else if (collision.gameObject.CompareTag("StationaryEnemy"))
@@ -171,37 +193,62 @@ public class SnakeTail : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("End");
     }
 
-    IEnumerator WaitPowerUp()
+    IEnumerator WaitPowerUp(bool yellow)
     {
-        powerUpActivated = true;
-        
+        RemoveSpikes();
+        powerUpActivated = false;
+        Time.timeScale = 1f;
 
-        // Change Head
-        //if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
-        //    SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
-        // Change Bodys
-        GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
+        if (yellow)
+        {
+            Time.timeScale = 0.5f;
+
+            // wait 8 sec
+            decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(4f));
+            yield return decreaseScaleOverTime;
+
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            powerUpActivated = true;
+
+            AddSpikes();
+
+            // wait 8 sec
+            decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(8f));
+            yield return decreaseScaleOverTime;
+
+            RemoveSpikes();
+
+            powerUpActivated = false;
+        }
+    }
+
+    private void AddSpikes()
+    {
         FindObjectOfType<AudioManager>().Pause("Background");
         FindObjectOfType<AudioManager>().Play("Spikes");
+        // Change Head
+        // if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+        // SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = HeadSpikes;
+        // Change Bodys
+        GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Body");
         foreach (GameObject body in bodyParts)
             body.GetComponent<SpriteRenderer>().sprite = BodySpikes;
+    }
 
-
-
-        // wait 5 sec
-        decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(8f));
-        yield return decreaseScaleOverTime;
-
+    private void RemoveSpikes()
+    {
+        FindObjectOfType<AudioManager>().UnPause("Background");
+        FindObjectOfType<AudioManager>().Stop("Spikes");
         // Change Head
-        //if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
-        //    SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
+        // if (SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>() != null)
+        // SnakeHeadGfx.gameObject.GetComponent<SpriteRenderer>().sprite = Head;
         // Change Bodys
         GameObject[] newBodyParts = GameObject.FindGameObjectsWithTag("Body");
-        FindObjectOfType<AudioManager>().UnPause("Background");
         foreach (GameObject body in newBodyParts)
             body.GetComponent<SpriteRenderer>().sprite = Body;
-
-        powerUpActivated = false;
     }
 
 }

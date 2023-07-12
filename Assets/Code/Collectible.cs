@@ -43,7 +43,7 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp") || collision.gameObject.CompareTag("QuickEnemy"))
+        if (!collision.gameObject.CompareTag("Player"))
         {
             HandleOverlap(collision);
 
@@ -64,7 +64,7 @@ public class Collectible : MonoBehaviour
             pushCoroutine = StartCoroutine(StopPush());
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        else
         {
             if (active)
             {
