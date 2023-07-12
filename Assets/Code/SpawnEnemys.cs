@@ -18,6 +18,7 @@ public class SpawnEnemys : MonoBehaviour
 
         StartCoroutine(SpawnEnemy());
         StartCoroutine(SpawnPowerUp());
+        StartCoroutine(SpawnSlownessPowerUp());
         StartCoroutine(SpawnQuickEnemy());
 
     }
@@ -90,12 +91,20 @@ public class SpawnEnemys : MonoBehaviour
     IEnumerator SpawnPowerUp()
     {
         // wait 10 - 20 sec
-        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+        yield return new WaitForSeconds(UnityEngine.Random.Range(15f, 25f) * 80 * Time.fixedDeltaTime); //set random time to spawn
 
-        int i = UnityEngine.Random.Range(0, powerups.Length);
-        InitEnemy(powerups[i]);
+        InitEnemy(powerups[0]);
 
         StartCoroutine(SpawnPowerUp());
     }
 
+    IEnumerator SpawnSlownessPowerUp()
+    {
+        // wait 10 - 20 sec
+        yield return new WaitForSeconds(UnityEngine.Random.Range(15f, 30f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+
+        InitEnemy(powerups[1]);
+
+        StartCoroutine(SpawnPowerUp());
+    }
 }

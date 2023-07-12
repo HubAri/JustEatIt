@@ -43,9 +43,9 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp") || collision.gameObject.CompareTag("SlownessPowerUp") || collision.gameObject.CompareTag("QuickEnemy"))
         {
-            
+
             HandleOverlap(collision);
 
             if (pushCoroutine != null)
@@ -55,7 +55,16 @@ public class Collectible : MonoBehaviour
             awayDirection = (Vector2)transform.position - (Vector2)collision.transform.position;
             awayDirection.Normalize();
 
+            Rigidbody2D colliderRB = collision.gameObject.GetComponent<Rigidbody2D>();
+
             // Calculate the push velocity
+
+            if (collision.gameObject.CompareTag("QuickEnemy"))
+                pushForce = 16f;
+            else
+                pushForce = 12f;
+
+
             Vector2 pushVelocity = awayDirection * pushForce;
 
             // Apply the push velocity to the rigidbody
@@ -65,7 +74,7 @@ public class Collectible : MonoBehaviour
             pushCoroutine = StartCoroutine(StopPush());
         }
 
-        else
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (active)
             {
@@ -143,7 +152,7 @@ public class Collectible : MonoBehaviour
             Vector2 pushVelocity = awayDirection;
 
             // Apply the push velocity to the rigidbody
-            rb.velocity = pushVelocity * 3f;
+            rb.velocity = pushVelocity * 5f;
 
             // Start the push coroutine
             pushCoroutine = StartCoroutine(StopWallBounce());
