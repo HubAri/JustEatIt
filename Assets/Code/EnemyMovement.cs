@@ -110,7 +110,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp") || collision.gameObject.CompareTag("QuickEnemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("PowerUp") || collision.gameObject.CompareTag("SlownessPowerUp") || collision.gameObject.CompareTag("QuickEnemy"))
         {
             Collider2D collider = collision.collider;
             float otherRadius = 0f;

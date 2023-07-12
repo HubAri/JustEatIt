@@ -45,6 +45,7 @@ public class Collectible : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player"))
         {
+            
             HandleOverlap(collision);
 
             if (pushCoroutine != null)
