@@ -27,7 +27,7 @@ public class SnakeTail : MonoBehaviour
     private Sprite Head, HeadSpikes, Body, BodySpikes;
 
     [SerializeField]
-    private GameObject EndMenu;
+    private NewEndMenu EndMenu;
 
     private Dictionary<int, Transform> snakeTails = new();
     private List<Vector2> positions = new();
@@ -165,7 +165,7 @@ public class SnakeTail : MonoBehaviour
         GameObject snake = gameObject;
         Destroy(snake);
         Time.timeScale = 0;
-        EndMenu.SetActive(true);
+        EndMenu.Freeze();
         FindObjectOfType<AudioManager>().Stop("Background");
         FindObjectOfType<AudioManager>().Stop("Ow");
         FindObjectOfType<AudioManager>().Play("End");

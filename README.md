@@ -1,4 +1,13 @@
 # MMP
+Startszene: MainMenu
+
+Spiel auch gehostet auf itch.io:
+https://justeatit.itch.io/justeatit
+Passwort: JustEatIt
+
+Mit Escape kann im Spiel pausiert werden.
+
+
 
 
 

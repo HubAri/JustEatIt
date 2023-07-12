@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -25,9 +23,10 @@ public class Score : MonoBehaviour
         scoreText.text = "Score: " + scoreNum;
     }
 
-
-
-
+    public int getScore()
+    {
+        return scoreNum;
+    }
 
 
     private void PositionScore()
