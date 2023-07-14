@@ -2553,6 +2553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemys:
   - {fileID: 4381071245987706818, guid: 8621216db3c651f4299581e10216ef18, type: 3}
+  - {fileID: 104989447170550780, guid: 5f3073df2ade77d42b0eb3fe8b301a85, type: 3}
   powerups:
   - {fileID: 2482328284136040006, guid: ce05375878705364b98bd449bc06cf15, type: 3}
   - {fileID: 2482328284136040006, guid: 6c535b5faffbf784ca6429f5d65b3d3a, type: 3}
