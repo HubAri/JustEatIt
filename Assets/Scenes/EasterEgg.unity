@@ -433,8 +433,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2095,10 +2095,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078f9986fe31f35478a4a2874cc428d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutral: {fileID: 1949737221636009658, guid: cc6364f13c8ddbb40a73bf4277e865d6, type: 3}
-  positive: {fileID: 7878207958758924735, guid: bdaa8ab0d8974424a8b5decbd05ce241,
+  neutral: {fileID: 1949737221636009658, guid: 097a05be1968e4e4caf4bac97d8e7ae7, type: 3}
+  positive: {fileID: 7878207958758924735, guid: c6d6890496da9e643ad76cb287539e5b,
     type: 3}
-  negative: {fileID: 7878207958758924735, guid: c91f6308b048d84408e603c298aedbd6,
+  negative: {fileID: 7878207958758924735, guid: ab8e3fa1b2880e247a329c458e8d504a,
     type: 3}
 --- !u!1 &1412504363
 GameObject:
@@ -2767,7 +2767,7 @@ SpriteRenderer:
   m_SortingLayerID: 1361834349
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: add8ac5674af045139f3443b51c50555, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0995d27c9c82ef245994425607faa891, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2786,8 +2786,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710820582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0016, y: 0.2614, z: 0}
-  m_LocalScale: {x: 0.62774783, y: 0.60199493, z: 0.46302474}
+  m_LocalPosition: {x: -0.0016, y: 0.11, z: 0}
+  m_LocalScale: {x: 1.308784, y: 1.3417786, z: 0.65447783}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

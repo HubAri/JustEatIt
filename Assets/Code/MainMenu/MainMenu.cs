@@ -18,6 +18,6 @@ public class MainMenu : MonoBehaviour
 
     public void EasterEggGame()
     {
-        SceneManager.LoadScene("HiddenLevel");
+        SceneManager.LoadScene("EasterEgg");
     }
 }

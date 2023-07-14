@@ -101,10 +101,10 @@ public class SpawnEnemys : MonoBehaviour
     IEnumerator SpawnSlownessPowerUp()
     {
         // wait 10 - 20 sec
-        yield return new WaitForSeconds(UnityEngine.Random.Range(15f, 30f) * 80 * Time.fixedDeltaTime); //set random time to spawn
+        yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 15f) * 80 * Time.fixedDeltaTime); //set random time to spawn
 
         InitEnemy(powerups[1]);
 
-        StartCoroutine(SpawnPowerUp());
+        StartCoroutine(SpawnSlownessPowerUp());
     }
 }
