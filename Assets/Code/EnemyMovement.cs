@@ -6,6 +6,8 @@ using static Unity.Burst.Intrinsics.X86;
 
 public class EnemyMovement : MonoBehaviour
 {
+
+    [SerializeField]
     private float enemySpeed = 1.5f;
     private float quickEnemySpeed = 3f;
     private float rotationSpeed = 5f;
