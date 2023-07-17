@@ -902,6 +902,7 @@ MonoBehaviour:
   maxDistance: 10
   minDistance: 1
   rotaionSpeed: 200
+  headanimator: {fileID: 0}
   speed: 0
 --- !u!4 &1321505568
 Transform:
@@ -1009,6 +1010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SnakeHeadGfx: {fileID: 60739484}
   SnakeTailGfx: {fileID: 2028802732}
+  powerUpBar: {fileID: 0}
   snakeLength: 0
   snakeMove: {fileID: 1321505567}
   powerUpActivated: 0
@@ -1114,6 +1116,8 @@ MonoBehaviour:
   - {fileID: 4381071245987706818, guid: 8621216db3c651f4299581e10216ef18, type: 3}
   powerups:
   - {fileID: 4035325853155144375, guid: 83f08877664b07c4497ec727e9b2d5a8, type: 3}
+  quickEnemies: []
+  enemyArrow: {fileID: 0}
 --- !u!1 &1693325058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748414082}
   - component: {fileID: 1748414083}
+  - component: {fileID: 1748414084}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1263,6 +1268,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 85586150}
+--- !u!114 &1748414084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748414081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee5da0827b912c41ad01e601d101a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 0}
 --- !u!1001 &1937690441
 PrefabInstance:
   m_ObjectHideFlags: 0
