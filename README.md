@@ -15,8 +15,8 @@ Mit Escape kann das Spiel pausiert werden.
 ### Spielelemente
 - Grüne und goldne Äpfel geben Punkte, braune Ziehen Punkte ab.
 - Spinnen und Vögel fressen den Wurm und das Spiel ist beendet.
-- rote Marienkäfer geben dem Wurm ein PowerUp, sodass er für kurze Zeit Gegner fressen kann (keine Punkte).
-- gelbe Marienkäfer schaden dem Wurm und er wird langsamer.
+- Rote Marienkäfer geben dem Wurm ein PowerUp, sodass er für kurze Zeit Gegner fressen kann (keine Punkte).
+- Gelbe Marienkäfer verlangsamen das Spiel, sodass leichte ausgewichen werden kann.
 
 
 
