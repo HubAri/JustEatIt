@@ -39,6 +39,7 @@ public class BeginGameCounter : StateMachineBehaviour
             beginGameIn.SetText(string.Empty); 
             Debug.Log("stateInfo: play");
             Time.timeScale = 1f;
+            FindObjectOfType<AudioManager>().Play("Background");
         }
     }
 

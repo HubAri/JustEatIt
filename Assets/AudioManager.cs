@@ -54,4 +54,14 @@ public class AudioManager : MonoBehaviour
         AudioSound s = Array.Find(sounds, sound => sound.name == name);
         s.source.UnPause();
     }
+    public void LowerPitch(string name)
+    {
+        AudioSound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.pitch = 0.75f;
+    }
+    public void NormalPitch(string name)
+    {
+        AudioSound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.pitch = 1f;
+    }
 }

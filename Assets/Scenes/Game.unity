@@ -3396,6 +3396,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Countdown
+    clip: {fileID: 8300000, guid: cbba180a8984bf14fafc258c63a5cc10, type: 3}
+    volume: 0.2
+    pitch: 1.25
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1992682548
 Transform:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class SnakeTail : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        FindObjectOfType<AudioManager>().Play("Background");
+        FindObjectOfType<AudioManager>().Play("Countdown");
         positions.Add(SnakeTailGfx.position); // Position of SnakeTail 0 (behind the head)
         AddTail();
         AddTail();
@@ -188,6 +188,7 @@ public class SnakeTail : MonoBehaviour
         Destroy(snake);
         Time.timeScale = 0;
         EndMenu.Freeze();
+        FindObjectOfType<AudioManager>().NormalPitch("Background");
         FindObjectOfType<AudioManager>().Stop("Background");
         FindObjectOfType<AudioManager>().Stop("Ow");
         FindObjectOfType<AudioManager>().Play("End");
@@ -202,12 +203,14 @@ public class SnakeTail : MonoBehaviour
         if (yellow)
         {
             Time.timeScale = 0.5f;
+            FindObjectOfType<AudioManager>().LowerPitch("Background");
 
             // wait 8 sec
             decreaseScaleOverTime = StartCoroutine(powerUpBar.DecreaseScaleOverTime(4f));
             yield return decreaseScaleOverTime;
 
             Time.timeScale = 1f;
+            FindObjectOfType<AudioManager>().NormalPitch("Background");
         }
         else
         {
