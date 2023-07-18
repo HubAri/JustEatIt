@@ -3197,19 +3197,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Eat
-    clip: {fileID: 8300000, guid: 189c27cd62319224cb0b05ddafc8c0e7, type: 3}
+    clip: {fileID: 8300000, guid: 3aeedd1ec82223d49b1317acee6a8f81, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Disgust
-    clip: {fileID: 8300000, guid: d4ff4c1555af41d4abdf656f97c99470, type: 3}
+    clip: {fileID: 8300000, guid: 99f10856eec0cf540923df9f7224bdc7, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Joy
-    clip: {fileID: 8300000, guid: c16b4d5f1e38d6343b50a54dbd592747, type: 3}
+    clip: {fileID: 8300000, guid: 8618dd4afcb820a4db384f4d41b050dc, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -3221,19 +3221,19 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Spikes
-    clip: {fileID: 8300000, guid: b60b6a3e81bddfe43b1651dd64e86cc9, type: 3}
-    volume: 1.5
+    clip: {fileID: 8300000, guid: 81b9066bbc36d9b49a2e19e2ba37ef54, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Background
-    clip: {fileID: 8300000, guid: 39df6b256fe877e40b76b6053a375f14, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 1fa2df625cd7edf40a6afadbc85071dc, type: 3}
+    volume: 0.2
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Ow
-    clip: {fileID: 8300000, guid: 472aafee2334ea14182af196bf55723e, type: 3}
+    clip: {fileID: 8300000, guid: 448b1024939927447b020ebde69d5243, type: 3}
     volume: 1
     pitch: 1
     loop: 0
