@@ -31,7 +31,6 @@ public class BeginGameCounter : StateMachineBehaviour
             BeginGameText beginGameIn = GameObject.Find("GameObject").GetComponent<BeginGameText>();
             beginGameIn.SetText("Start"); 
             Debug.Log("stateInfo: start");
-            Time.timeScale = 0.4f;
         }
         else if (stateInfo.IsName("play"))
         {
