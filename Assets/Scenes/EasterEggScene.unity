@@ -2712,8 +2712,8 @@ MonoBehaviour:
   enemys:
   - {fileID: 4381071245987706818, guid: bce3e071a9d76ce48bfebd210ab113ad, type: 3}
   powerups:
-  - {fileID: 4035325853155144375, guid: 4abc097a6b796434c9c6606218102c50, type: 3}
-  - {fileID: 4035325853155144375, guid: b53b7d70b246741ebb8b03fc5063419e, type: 3}
+  - {fileID: 2482328284136040006, guid: 11a779cdc7074436d96c40ebc9fe08f6, type: 3}
+  - {fileID: 2482328284136040006, guid: baa77090a4bfc459a8c394a1208d9d04, type: 3}
   quickEnemies:
   - {fileID: 2244160484476611925, guid: 46c702336b049a44381a85c6e451840c, type: 3}
   enemyArrow: {fileID: 1646998872}
