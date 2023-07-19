@@ -14,10 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/EndMenu.unity
     guid: e03b8f1f4505b5a4e9ec66445f863f04
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HiddenLevel.unity
     guid: c588f382bd030874aa22a74bbce29854
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EasterEgg.unity
     guid: 62bebb98e068012478e8a03142eb5c44
+  - enabled: 1
+    path: Assets/Scenes/EasterEggScene.unity
+    guid: 3c01ab0814f03c742ad10299353eff9a
   m_configObjects: {}
