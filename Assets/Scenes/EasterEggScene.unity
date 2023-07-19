@@ -3377,7 +3377,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Spikes
     clip: {fileID: 8300000, guid: 29dcc6b8e874d88479a28665750c9e0a, type: 3}
-    volume: 0.5
+    volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
