@@ -197,7 +197,7 @@ SpriteRenderer:
   m_SortingLayerID: -1113530943
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2252414a52409da49af71480f4b75aaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8824d84ea3b3b2943937d37a1f95bfb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -216,7 +216,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60739483}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 313961abeff494a84a33ca2424ff428f, type: 2}
   m_CullingMode: 0
@@ -2070,10 +2070,10 @@ MonoBehaviour:
   snakeLength: 0
   snakeMove: {fileID: 1321505567}
   powerUpActivated: 0
-  Head: {fileID: 21300000, guid: 2252414a52409da49af71480f4b75aaf, type: 3}
-  HeadSpikes: {fileID: 21300000, guid: 08c708529dab96340af8aa11a06ad2a7, type: 3}
-  Body: {fileID: 21300000, guid: 58700ef4b1853f140a07407a58fdb848, type: 3}
-  BodySpikes: {fileID: 21300000, guid: cf4ebbc45a853814280bd019119f6294, type: 3}
+  Head: {fileID: 21300000, guid: 8824d84ea3b3b2943937d37a1f95bfb6, type: 3}
+  HeadSpikes: {fileID: 21300000, guid: 8824d84ea3b3b2943937d37a1f95bfb6, type: 3}
+  Body: {fileID: 21300000, guid: 007de19b505bb0a4a8fe3761049ea652, type: 3}
+  BodySpikes: {fileID: 21300000, guid: e88bb9fc7fbc9ef41a1f67a618bfb409, type: 3}
   EndMenu: {fileID: 1693325064}
 --- !u!1 &1333810162
 GameObject:
@@ -3489,7 +3489,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 58700ef4b1853f140a07407a58fdb848, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 007de19b505bb0a4a8fe3761049ea652, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
