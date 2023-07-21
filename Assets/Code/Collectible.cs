@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -151,7 +152,11 @@ public class Collectible : MonoBehaviour
             Vector2 pushVelocity = awayDirection;
 
             // Apply the push velocity to the rigidbody
-            rb.velocity = pushVelocity * 5f;
+            try
+            {
+                rb.velocity = pushVelocity * 5f;
+            }
+            catch (NullReferenceException) { }
 
             // Start the push coroutine
             pushCoroutine = StartCoroutine(StopWallBounce());
