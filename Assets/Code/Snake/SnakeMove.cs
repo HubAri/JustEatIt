@@ -23,11 +23,14 @@ public class SnakeMove : MonoBehaviour
 
     private bool mouseControl = true;
 
-
-    private void Update()
+    private void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         snakeTail = GameObject.Find("Snake").GetComponent<SnakeTail>();
+    }
+
+    private void Update()
+    {
         if (snakeTail.powerUpActivated)
         {
             headanimator.SetBool("PowerUpActive", true);
