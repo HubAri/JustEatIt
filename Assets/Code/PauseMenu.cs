@@ -27,6 +27,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         FindObjectOfType<AudioManager>().UnPause("Background");
+        FindObjectOfType<AudioManager>().UnPause("Spikes");
         pausedGame = false;
         menuPauseObject.SetActive(false);
         Time.timeScale = 1f;
@@ -36,6 +37,7 @@ public class PauseMenu : MonoBehaviour
     void Freeze()
     {
         FindObjectOfType<AudioManager>().Pause("Background");
+        FindObjectOfType<AudioManager>().Pause("Spikes");
         pausedGame = true;
         menuPauseObject.SetActive(true);
         Time.timeScale = 0f;
