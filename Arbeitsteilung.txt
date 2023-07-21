@@ -1,0 +1,50 @@
+Arian:
+    Grafiken von Spinne, Schallplatten, Hidden-Level Wurm
+    Hintergrund für Hidden-Level und Main-Menu
+    Spinne eingebaut (Collider)
+    Marienkäfer und Spinne animiert
+    Main-Menu
+    Pause-Screen
+
+
+Max:
+    Grafiken von Vogel (grün, rot)
+    Kurzanleitung (ReadMe)
+    Timer vor Spielstart
+    erste Versuche von End-Screen
+
+
+Jonas:
+    Grafiken von Noten-PowerUps
+    Anfänge von Spike-PowerUp
+    Wurmkopf animiert
+    erste Versuche von animiertem Marienkäfer
+    Hintergrund im Spiel
+    Abgabevideo
+
+
+Tea:
+    Alle Sounds
+    Hintergrundmusik
+
+
+Chris:
+    Grafiken von Wurm, Wurm mit Stacheln, Vogel (blau, rot), Äpfel, Marienkäfer, Zombie
+
+    Wurmkopf:
+    Maus folgen (weiter weg -> schneller), Kollision, Stacheln
+
+    Wurmkörper:
+    Movement (Position von Vorderglied nehmen), Kollision mit Gegner, Wachstum
+
+    Äpfel:
+    kleiner Score beim Einsammeln, Push-Physik, Spawnverhalten
+
+    Gegner:
+    Roter Indikatorpfeil, Movement, Kollision, Spawnverhalten
+
+    Score (unabhängig von Bildschirmgröße, immer oben rechts)
+    PowerUps
+    PowerUp Zeitleiste (unabhängig von Bildschirmgröße, immer oben links)
+    End-Screen
+    FPS-Limit
