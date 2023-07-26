@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (Mathf.Abs(transform.position.x) > Mathf.Abs(screenBounds.x + objectWidth) || Mathf.Abs(transform.position.y) > Mathf.Abs(screenBounds.y + objectHeight))
         { // Enemy completly outside of view -> rotate to view
-            SetSpawnDirectionForEnemy();
+            SetSpawnDirectionForEnemy(); // TODO: wird, wenn außerhalb bei jedem Frame neu zugewiesen -> deshalb zappelt Enemy out of screen (vllt einfach nur auskommentieren?)
         }
         else
         {

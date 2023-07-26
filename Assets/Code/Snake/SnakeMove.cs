@@ -45,8 +45,8 @@ public class SnakeMove : MonoBehaviour
         if (!mouseControl)
         {
             velX = Input.GetAxisRaw("Horizontal"); // pressed A -> -1, D -> 1, else 0
-            transform.Translate(Vector2.up * speedKeyboard * Time.fixedDeltaTime, Space.Self);
-            transform.Rotate(Vector3.forward * -velX * rotaionSpeed * Time.fixedDeltaTime);
+            transform.Translate(speedKeyboard * Time.fixedDeltaTime * Vector2.up, Space.Self);
+            transform.Rotate(rotaionSpeed * Time.fixedDeltaTime * -velX * Vector3.forward);
         }
         else
         {

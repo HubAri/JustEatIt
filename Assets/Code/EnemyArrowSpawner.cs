@@ -12,8 +12,6 @@ public class EnemyArrowSpawner : MonoBehaviour
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         objectHeight = arrowObject.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
-
-        
     }
 
     public void InstantiateArrow(int region, GameObject enemy)
